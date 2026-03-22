@@ -1,21 +1,14 @@
 package com.kyraltre.tretackshop;
 
+import com.kyraltre.tretackshop.block.TackShopBlocks;
+import com.kyraltre.tretackshop.item.AwardShopCreativeModTab;
+import com.kyraltre.tretackshop.item.BlockShopCreativeModTab;
+import com.kyraltre.tretackshop.item.TackShopCreativeModTab;
+import com.kyraltre.tretackshop.registry.*;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -25,10 +18,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.resources.ResourceLocation;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(TreTackShop.MOD_ID)
@@ -38,10 +28,26 @@ public class TreTackShop {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    public static ResourceLocation resloc(String name) {return ResourceLocation.fromNamespaceAndPath("tretackshop", name);}
+
+    public static ResourceLocation swresloc(String name) {return ResourceLocation.fromNamespaceAndPath("swem", name);}
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public TreTackShop(IEventBus modEventBus, ModContainer modContainer) {
+    public TreTackShop(ModContainer container, IEventBus modBus) {  //IEventBus modEventBus, ModContainer modContainer
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+//        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, TackShopCommonConfigs.SPEC, "tretackshop-common.toml");
+        TackShopCreativeModTab.init(modBus);
+        AwardShopCreativeModTab.init(modBus);
+        BlockShopCreativeModTab.init(modBus);
+
+        TackShopBlocks.register(modBus);
+        TackShopBlockRegistry.init(modBus);
+        AwardShopBlockRegistry.init(modBus);
+        TackShopItems.init(modBus);
+        AwardShopItems.init(modBus);
+        DecorShopItems.init(modBus);
+
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -54,7 +60,7 @@ public class TreTackShop {
         modEventBus.addListener(this::addCreative);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        //modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
