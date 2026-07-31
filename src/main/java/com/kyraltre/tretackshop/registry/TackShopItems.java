@@ -1,21 +1,23 @@
 package com.kyraltre.tretackshop.registry;
 
 
-import com.alaharranhonor.swem.forge.ModRef;
-import com.alaharranhonor.swem.forge.blocks.TackBoxBlock;
-import com.alaharranhonor.swem.forge.community.RackType;
-import com.alaharranhonor.swem.forge.community.TackType;
-import com.alaharranhonor.swem.forge.community.content.tack.type.*;
-import com.alaharranhonor.swem.forge.items.tack.*;
-import com.alaharranhonor.swem.forge.tack.TackItemDefinition;
-import com.alaharranhonor.swem.forge.util.ColorUtil;
+import com.alaharranhonor.swem.ModRef;
+import com.alaharranhonor.swem.block.TackBoxBlock;
+import com.alaharranhonor.swem.community.RackType;
+import com.alaharranhonor.swem.community.TackType;
+import com.alaharranhonor.swem.community.content.tack.type.*;
+import com.alaharranhonor.swem.item.tack.*;
+import com.alaharranhonor.swem.tack.TackItemDefinition;
+import com.alaharranhonor.swem.util.ColorUtil;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
+
+import net.neoforged.bus.api.IEventBus;
 import net.minecraftforge.registries.ForgeRegistries.Keys;
 import net.minecraftforge.registries.RegistryObject;
-import software.bernie.geckolib.core.object.Color;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import software.bernie.geckolib.util.Color;
 
 import java.util.ArrayList;
 import java.util.Collections;
