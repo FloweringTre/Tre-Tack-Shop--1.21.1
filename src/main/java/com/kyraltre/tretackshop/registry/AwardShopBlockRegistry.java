@@ -10,6 +10,7 @@ import com.alaharranhonor.swem.item.TackBoxBlockItem;
 import com.kyraltre.tretackshop.TreTackShop;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -168,21 +169,21 @@ public class AwardShopBlockRegistry {
                 };
             }));
             SLOW_FEEDER_MONARCH.add(register("slow_feeder_"+ "monarch", () -> {
-                return new SlowFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), null);
+                return new SlowFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), DyeColor.ORANGE);
             }, (block) -> {
                 return () -> {
                     return new BlockItemBase((Block)block.get());
                 };
             }));
             SLOW_FEEDER_MORPHO.add(register("slow_feeder_"+ "morpho", () -> {
-                return new SlowFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), null);
+                return new SlowFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), DyeColor.BLUE);
             }, (block) -> {
                 return () -> {
                     return new BlockItemBase((Block)block.get());
                 };
             }));
             SLOW_FEEDER_HOUND.add(register("slow_feeder_"+ "hound", () -> {
-                return new SlowFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), null);
+                return new SlowFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), DyeColor.PINK);
             }, (block) -> {
                 return () -> {
                     return new BlockItemBase((Block)block.get());
