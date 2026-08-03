@@ -9,12 +9,15 @@ import com.alaharranhonor.swem.community.content.tack.type.*;
 import com.alaharranhonor.swem.item.tack.*;
 import com.alaharranhonor.swem.tack.TackItemDefinition;
 import com.alaharranhonor.swem.util.ColorUtil;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.neoforged.bus.api.IEventBus;
-import net.minecraftforge.registries.ForgeRegistries.Keys;
-import net.minecraftforge.registries.RegistryObject;
+//import net.minecraftforge.registries.ForgeRegistries.Keys;
+//import net.minecraftforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import software.bernie.geckolib.util.Color;
@@ -24,7 +27,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class TackShopItems {
-    public static final DeferredRegister<Item> REGISTRY;
+    public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems("tretackshop");
 
     static int [][] tretackcolors= { // A collection of RGB colors to reference for blanket racks
             { 236, 226, 226 }, // "tre and moon white" [0]
@@ -45,156 +48,156 @@ public class TackShopItems {
     };
 
     // THIS IS FOR TACK REGISTRY THAT __CAN__ BE CRAFTED
-    public static final RegistryObject<Item> BUTTERFLY;
-    public static final RegistryObject<Item> BUTTERFLY_MONARCH;
-    public static final RegistryObject<Item> PAW_PRINT;
-    public static final RegistryObject<Item> RAINBOW_INA_BOTTLE;
+    public static final DeferredItem<Item> BUTTERFLY;
+    public static final DeferredItem<Item> BUTTERFLY_MONARCH;
+    public static final DeferredItem<Item> PAW_PRINT;
+    public static final DeferredItem<Item> RAINBOW_INA_BOTTLE;
 
     // TACK ITEMS
 
 
     //ONE OFF TACK
-    public static final RegistryObject<TackItem> PELHAM_BRIDLE_BLACK;
-    public static final RegistryObject<TackItem> PELHAM_BRIDLE_BROWN;
-    public static final RegistryObject<TackItem> MEDIEVAL_BRIDLE_BLACK;
-    public static final RegistryObject<TackItem> MEDIEVAL_BRIDLE_BROWN;
-    public static final RegistryObject<TackItem> MOON_BRIDLE_DOUBLE;
-    public static final RegistryObject<TackItem> BITLESS_BRIDLE;
-    public static final RegistryObject<TackItem> BAREBACK_SADDLE;
-    public static final RegistryObject<TackItem> BAREBACK_BLANKET;
-    public static final RegistryObject<TackItem> BAREBACK_GIRTH_STRAP;
-    public static final RegistryObject<TackItem> BITLESS_BRIDLE_BROWN;
-    public static final RegistryObject<TackItem> BAREBACK_SADDLE_BROWN;
-    public static final RegistryObject<TackItem> BAREBACK_GIRTH_STRAP_BROWN;
-    public static final RegistryObject<TackItem> BITLESS_BRIDLE_BEIGE;
-    public static final RegistryObject<TackItem> BAREBACK_SADDLE_BEIGE;
-    public static final RegistryObject<TackItem> BAREBACK_GIRTH_STRAP_BEIGE;
-    public static final RegistryObject<TackItem> HUNTER_BLANKET;
-    public static final RegistryObject<TackItem> BITLESS_BRIDLE_WHITE;
-    public static final RegistryObject<TackItem> BAREBACK_SADDLE_BLACK;
-    public static final RegistryObject<TackItem> BAREBACK_GIRTH_STRAP_WHITE;
+    public static final DeferredItem<TackItem> PELHAM_BRIDLE_BLACK;
+    public static final DeferredItem<TackItem> PELHAM_BRIDLE_BROWN;
+    public static final DeferredItem<TackItem> MEDIEVAL_BRIDLE_BLACK;
+    public static final DeferredItem<TackItem> MEDIEVAL_BRIDLE_BROWN;
+    public static final DeferredItem<TackItem> MOON_BRIDLE_DOUBLE;
+    public static final DeferredItem<TackItem> BITLESS_BRIDLE;
+    public static final DeferredItem<TackItem> BAREBACK_SADDLE;
+    public static final DeferredItem<TackItem> BAREBACK_BLANKET;
+    public static final DeferredItem<TackItem> BAREBACK_GIRTH_STRAP;
+    public static final DeferredItem<TackItem> BITLESS_BRIDLE_BROWN;
+    public static final DeferredItem<TackItem> BAREBACK_SADDLE_BROWN;
+    public static final DeferredItem<TackItem> BAREBACK_GIRTH_STRAP_BROWN;
+    public static final DeferredItem<TackItem> BITLESS_BRIDLE_BEIGE;
+    public static final DeferredItem<TackItem> BAREBACK_SADDLE_BEIGE;
+    public static final DeferredItem<TackItem> BAREBACK_GIRTH_STRAP_BEIGE;
+    public static final DeferredItem<TackItem> HUNTER_BLANKET;
+    public static final DeferredItem<TackItem> BITLESS_BRIDLE_WHITE;
+    public static final DeferredItem<TackItem> BAREBACK_SADDLE_BLACK;
+    public static final DeferredItem<TackItem> BAREBACK_GIRTH_STRAP_WHITE;
 
-    public static final RegistryObject<TackItem> DRESSAGE_SADDLE;
-    public static final RegistryObject<TackItem> DRESSAGE_BLANKET;
-    public static final RegistryObject<TackItem> DRESSAGE_GIRTH_STRAP;
-    public static final RegistryObject<TackItem> RACING_SADDLE_BROWN;
-    public static final RegistryObject<TackItem> RACING_SADDLE_BLACK;
+    public static final DeferredItem<TackItem> DRESSAGE_SADDLE;
+    public static final DeferredItem<TackItem> DRESSAGE_BLANKET;
+    public static final DeferredItem<TackItem> DRESSAGE_GIRTH_STRAP;
+    public static final DeferredItem<TackItem> RACING_SADDLE_BROWN;
+    public static final DeferredItem<TackItem> RACING_SADDLE_BLACK;
 
     // RAINBOW TACK
-    public static final RegistryObject<TackItem> HALTER_RAINBOW;
-    public static final RegistryObject<TackItem> PASTURE_BLANKET_RAINBOW;
-    public static final RegistryObject<TackItem> PASTURE_BLANKET_RAINBOW_ARMORED;
-    public static final RegistryObject<TackItem> ADVENTURE_BLANKET_RAINBOW;
-    public static final RegistryObject<TackItem> ENGLISH_BLANKET_RAINBOW;
-    public static final RegistryObject<TackItem> WESTERN_BLANKET_RAINBOW;
-    public static final RegistryObject<TackItem> ADVENTURE_LEG_WRAPS_RAINBOW;
-    public static final RegistryObject<TackItem> ENGLISH_LEG_WRAPS_RAINBOW;
-    public static final RegistryObject<TackItem> WESTERN_LEG_WRAPS_RAINBOW;
-    public static final RegistryObject<TackItem> ADVENTURE_SADDLE_RAINBOW;
-    public static final RegistryObject<TackItem> WESTERN_SADDLE_RAINBOW;
-    public static final RegistryObject<TackItem> ENGLISH_SADDLE_RAINBOW;
-    public static final RegistryObject<TackItem> ADVENTURE_BREAST_COLLAR_RAINBOW;
-    public static final RegistryObject<TackItem> WESTERN_BREAST_COLLAR_RAINBOW;
-    public static final RegistryObject<TackItem> ENGLISH_BREAST_COLLAR_RAINBOW;
-    public static final RegistryObject<TackItem> QUARTER_SHEET_BLACK_RAINBOW;
-    public static final RegistryObject<TackItem> QUARTER_SHEET_WHITE_RAINBOW;
-    public static final RegistryObject<TackItem> ADVENTURE_BRIDLE_RAINBOW;
-    public static final RegistryObject<TackItem> WESTERN_BRIDLE_RAINBOW;
-    public static final RegistryObject<TackItem> ENGLISH_BRIDLE_RAINBOW;
-    public static final RegistryObject<TackItem> ADVENTURE_GIRTH_STRAP_RAINBOW;
-    public static final RegistryObject<TackItem> WESTERN_GIRTH_STRAP_RAINBOW;
-    public static final RegistryObject<TackItem> ENGLISH_GIRTH_STRAP_RAINBOW;
-    public static final RegistryObject<TackItem> AMETHYST_HORSE_ARMOR_RAINBOW;
-    public static final RegistryObject<TackItem> IRON_HORSE_ARMOR_RAINBOW;
-    public static final RegistryObject<SaddlebagItem> SADDLE_BAG_RAINBOW;
-    public static final RegistryObject<TackItem> BAREBACK_BLANKET_RAINBOW;
-    public static final RegistryObject<TackItem> CLOTH_BITLESS_BRIDLE_RAINBOW;
+    public static final DeferredItem<TackItem> HALTER_RAINBOW;
+    public static final DeferredItem<TackItem> PASTURE_BLANKET_RAINBOW;
+    public static final DeferredItem<TackItem> PASTURE_BLANKET_RAINBOW_ARMORED;
+    public static final DeferredItem<TackItem> ADVENTURE_BLANKET_RAINBOW;
+    public static final DeferredItem<TackItem> ENGLISH_BLANKET_RAINBOW;
+    public static final DeferredItem<TackItem> WESTERN_BLANKET_RAINBOW;
+    public static final DeferredItem<TackItem> ADVENTURE_LEG_WRAPS_RAINBOW;
+    public static final DeferredItem<TackItem> ENGLISH_LEG_WRAPS_RAINBOW;
+    public static final DeferredItem<TackItem> WESTERN_LEG_WRAPS_RAINBOW;
+    public static final DeferredItem<TackItem> ADVENTURE_SADDLE_RAINBOW;
+    public static final DeferredItem<TackItem> WESTERN_SADDLE_RAINBOW;
+    public static final DeferredItem<TackItem> ENGLISH_SADDLE_RAINBOW;
+    public static final DeferredItem<TackItem> ADVENTURE_BREAST_COLLAR_RAINBOW;
+    public static final DeferredItem<TackItem> WESTERN_BREAST_COLLAR_RAINBOW;
+    public static final DeferredItem<TackItem> ENGLISH_BREAST_COLLAR_RAINBOW;
+    public static final DeferredItem<TackItem> QUARTER_SHEET_BLACK_RAINBOW;
+    public static final DeferredItem<TackItem> QUARTER_SHEET_WHITE_RAINBOW;
+    public static final DeferredItem<TackItem> ADVENTURE_BRIDLE_RAINBOW;
+    public static final DeferredItem<TackItem> WESTERN_BRIDLE_RAINBOW;
+    public static final DeferredItem<TackItem> ENGLISH_BRIDLE_RAINBOW;
+    public static final DeferredItem<TackItem> ADVENTURE_GIRTH_STRAP_RAINBOW;
+    public static final DeferredItem<TackItem> WESTERN_GIRTH_STRAP_RAINBOW;
+    public static final DeferredItem<TackItem> ENGLISH_GIRTH_STRAP_RAINBOW;
+    public static final DeferredItem<TackItem> AMETHYST_HORSE_ARMOR_RAINBOW;
+    public static final DeferredItem<TackItem> IRON_HORSE_ARMOR_RAINBOW;
+    public static final DeferredItem<SaddlebagItem> SADDLE_BAG_RAINBOW;
+    public static final DeferredItem<TackItem> BAREBACK_BLANKET_RAINBOW;
+    public static final DeferredItem<TackItem> CLOTH_BITLESS_BRIDLE_RAINBOW;
 
     // TRANSPARENT 'BAREBACK/LIBERTY' TACK
-    public static final RegistryObject<TackItem> ADVENTURE_BLANKET_TRANS;
-    public static final RegistryObject<TackItem> ENGLISH_BLANKET_TRANS;
-    public static final RegistryObject<TackItem> WESTERN_BLANKET_TRANS;
-    public static final RegistryObject<TackItem> ADVENTURE_LEG_WRAPS_TRANS;
-    public static final RegistryObject<TackItem> ADVENTURE_SADDLE_TRANS;
-    public static final RegistryObject<TackItem> WESTERN_SADDLE_TRANS;
-    public static final RegistryObject<TackItem> ENGLISH_SADDLE_TRANS;
-    public static final RegistryObject<TackItem> ADVENTURE_BREAST_COLLAR_TRANS;
-    public static final RegistryObject<TackItem> ADVENTURE_BRIDLE_TRANS;
-    public static final RegistryObject<TackItem> WESTERN_BRIDLE_TRANS;
-    public static final RegistryObject<TackItem> ENGLISH_BRIDLE_TRANS;
-    public static final RegistryObject<TackItem> ADVENTURE_GIRTH_STRAP_TRANS;
-    public static final RegistryObject<TackItem> WESTERN_GIRTH_STRAP_TRANS;
-    public static final RegistryObject<TackItem> ENGLISH_GIRTH_STRAP_TRANS;
+    public static final DeferredItem<TackItem> ADVENTURE_BLANKET_TRANS;
+    public static final DeferredItem<TackItem> ENGLISH_BLANKET_TRANS;
+    public static final DeferredItem<TackItem> WESTERN_BLANKET_TRANS;
+    public static final DeferredItem<TackItem> ADVENTURE_LEG_WRAPS_TRANS;
+    public static final DeferredItem<TackItem> ADVENTURE_SADDLE_TRANS;
+    public static final DeferredItem<TackItem> WESTERN_SADDLE_TRANS;
+    public static final DeferredItem<TackItem> ENGLISH_SADDLE_TRANS;
+    public static final DeferredItem<TackItem> ADVENTURE_BREAST_COLLAR_TRANS;
+    public static final DeferredItem<TackItem> ADVENTURE_BRIDLE_TRANS;
+    public static final DeferredItem<TackItem> WESTERN_BRIDLE_TRANS;
+    public static final DeferredItem<TackItem> ENGLISH_BRIDLE_TRANS;
+    public static final DeferredItem<TackItem> ADVENTURE_GIRTH_STRAP_TRANS;
+    public static final DeferredItem<TackItem> WESTERN_GIRTH_STRAP_TRANS;
+    public static final DeferredItem<TackItem> ENGLISH_GIRTH_STRAP_TRANS;
 
     // CRAFTABLE NUMBERED TACK
-    public static final List<RegistryObject<TackItem>> HALTERS;
-    public static final List<RegistryObject<TackItem>> FLYMASKS;
-    public static final List<RegistryObject<TackItem>> PASTURE_BLANKETS;
-    public static final List<RegistryObject<TackItem>> PASTURE_BLANKETS_ARMORED;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_BLANKETS;
-    public static final List<RegistryObject<TackItem>> ENGLISH_BLANKETS;
-    public static final List<RegistryObject<TackItem>> WESTERN_BLANKETS;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_LEG_WRAPS;
-    public static final List<RegistryObject<TackItem>> ENGLISH_LEG_WRAPS;
-    public static final List<RegistryObject<TackItem>> WESTERN_LEG_WRAPS;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_SADDLES;
-    public static final List<RegistryObject<TackItem>> WESTERN_SADDLES;
-    public static final List<RegistryObject<TackItem>> ENGLISH_SADDLES;
-    public static final List<RegistryObject<TackItem>> ENGLISH_SADDLES_OTHER;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_BREAST_COLLARS;
-    public static final List<RegistryObject<TackItem>> WESTERN_BREAST_COLLARS;
-    public static final List<RegistryObject<TackItem>> ENGLISH_BREAST_COLLARS;
-    public static final List<RegistryObject<TackItem>> ENGLISH_BREAST_COLLARS_OTHER;
-    public static final List<RegistryObject<TackItem>> CLOTH_BREAST_COLLARS;
-    public static final List<RegistryObject<TackItem>> QUARTER_SHEETS_NUMBERED;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_BRIDLES;
-    public static final List<RegistryObject<TackItem>> WESTERN_BRIDLES;
-    public static final List<RegistryObject<TackItem>> ENGLISH_BRIDLES;
-    public static final List<RegistryObject<TackItem>> ENGLISH_BRIDLES_OTHER;
-    public static final List<RegistryObject<TackItem>> CLOTH_BRIDLES;
-    public static final List<RegistryObject<TackItem>> CLOTH_BITLESS_BRIDLES;
-    public static final List<RegistryObject<TackItem>> BAREBACK_BLANKETS;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_GIRTH_STRAPS;
-    public static final List<RegistryObject<TackItem>> WESTERN_GIRTH_STRAPS;
-    public static final List<RegistryObject<TackItem>> ENGLISH_GIRTH_STRAPS;
-    public static final List<RegistryObject<TackItem>> ENGLISH_GIRTH_STRAPS_OTHER;
-    public static final List<RegistryObject<TackItem>> CLOTH_GIRTH_STRAPS;
-    public static final List<RegistryObject<SaddlebagItem>> SADDLE_BAGS;
-    public static final List<RegistryObject<TackItem>> CLOTH_ARMOR;
+    public static final List<DeferredItem<TackItem>> HALTERS;
+    public static final List<DeferredItem<TackItem>> FLYMASKS;
+    public static final List<DeferredItem<TackItem>> PASTURE_BLANKETS;
+    public static final List<DeferredItem<TackItem>> PASTURE_BLANKETS_ARMORED;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_BLANKETS;
+    public static final List<DeferredItem<TackItem>> ENGLISH_BLANKETS;
+    public static final List<DeferredItem<TackItem>> WESTERN_BLANKETS;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_LEG_WRAPS;
+    public static final List<DeferredItem<TackItem>> ENGLISH_LEG_WRAPS;
+    public static final List<DeferredItem<TackItem>> WESTERN_LEG_WRAPS;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_SADDLES;
+    public static final List<DeferredItem<TackItem>> WESTERN_SADDLES;
+    public static final List<DeferredItem<TackItem>> ENGLISH_SADDLES;
+    public static final List<DeferredItem<TackItem>> ENGLISH_SADDLES_OTHER;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_BREAST_COLLARS;
+    public static final List<DeferredItem<TackItem>> WESTERN_BREAST_COLLARS;
+    public static final List<DeferredItem<TackItem>> ENGLISH_BREAST_COLLARS;
+    public static final List<DeferredItem<TackItem>> ENGLISH_BREAST_COLLARS_OTHER;
+    public static final List<DeferredItem<TackItem>> CLOTH_BREAST_COLLARS;
+    public static final List<DeferredItem<TackItem>> QUARTER_SHEETS_NUMBERED;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_BRIDLES;
+    public static final List<DeferredItem<TackItem>> WESTERN_BRIDLES;
+    public static final List<DeferredItem<TackItem>> ENGLISH_BRIDLES;
+    public static final List<DeferredItem<TackItem>> ENGLISH_BRIDLES_OTHER;
+    public static final List<DeferredItem<TackItem>> CLOTH_BRIDLES;
+    public static final List<DeferredItem<TackItem>> CLOTH_BITLESS_BRIDLES;
+    public static final List<DeferredItem<TackItem>> BAREBACK_BLANKETS;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_GIRTH_STRAPS;
+    public static final List<DeferredItem<TackItem>> WESTERN_GIRTH_STRAPS;
+    public static final List<DeferredItem<TackItem>> ENGLISH_GIRTH_STRAPS;
+    public static final List<DeferredItem<TackItem>> ENGLISH_GIRTH_STRAPS_OTHER;
+    public static final List<DeferredItem<TackItem>> CLOTH_GIRTH_STRAPS;
+    public static final List<DeferredItem<SaddlebagItem>> SADDLE_BAGS;
+    public static final List<DeferredItem<TackItem>> CLOTH_ARMOR;
 
     // CRAFTABLE TACK IN THE 16 DYEABLE COLORS
-    public static final List<RegistryObject<TackItem>> CLOTH_BITLESS_BRIDLES_DYED;
-    public static final List<RegistryObject<TackItem>> BAREBACK_BLANKETS_DYED;
-    public static final List<RegistryObject<TackItem>> FLYMASKS_DYED;
-    public static final List<RegistryObject<TackItem>> QUARTER_SHEETS_DYED;
-    public static final List<RegistryObject<TackItem>> CLOTH_ARMOR_DYED;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_GIRTH_STRAPS_DYED;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_BRIDLES_DYED;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_BREAST_COLLARS_DYED;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_SADDLES_DYED;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_LEG_WRAPS_DYED;
-    public static final List<RegistryObject<TackItem>> ADVENTURE_BLANKETS_DYED;
-    public static final List<RegistryObject<TackItem>> ENGLISH_GIRTH_STRAPS_BLACK_DYED;
-    public static final List<RegistryObject<TackItem>> ENGLISH_BREAST_COLLARS_BLACK_DYED;
-    public static final List<RegistryObject<TackItem>> ENGLISH_BRIDLES_BLACK_DYED;
-    public static final List<RegistryObject<TackItem>> ENGLISH_SADDLES_BLACK_DYED;
-    public static final List<RegistryObject<TackItem>> CLOTH_GIRTH_STRAPS_DYED;
-    public static final List<RegistryObject<TackItem>> CLOTH_BRIDLES_DYED;
-    public static final List<RegistryObject<TackItem>> CLOTH_BREAST_COLLARS_DYED;
-    public static final List<RegistryObject<TackItem>> ENGLISH_GIRTH_STRAPS_BROWN_DYED;
-    public static final List<RegistryObject<TackItem>> ENGLISH_BREAST_COLLARS_BROWN_DYED;
-    public static final List<RegistryObject<TackItem>> ENGLISH_BRIDLES_BROWN_DYED;
-    public static final List<RegistryObject<TackItem>> ENGLISH_SADDLES_BROWN_DYED;
+    public static final List<DeferredItem<TackItem>> CLOTH_BITLESS_BRIDLES_DYED;
+    public static final List<DeferredItem<TackItem>> BAREBACK_BLANKETS_DYED;
+    public static final List<DeferredItem<TackItem>> FLYMASKS_DYED;
+    public static final List<DeferredItem<TackItem>> QUARTER_SHEETS_DYED;
+    public static final List<DeferredItem<TackItem>> CLOTH_ARMOR_DYED;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_GIRTH_STRAPS_DYED;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_BRIDLES_DYED;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_BREAST_COLLARS_DYED;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_SADDLES_DYED;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_LEG_WRAPS_DYED;
+    public static final List<DeferredItem<TackItem>> ADVENTURE_BLANKETS_DYED;
+    public static final List<DeferredItem<TackItem>> ENGLISH_GIRTH_STRAPS_BLACK_DYED;
+    public static final List<DeferredItem<TackItem>> ENGLISH_BREAST_COLLARS_BLACK_DYED;
+    public static final List<DeferredItem<TackItem>> ENGLISH_BRIDLES_BLACK_DYED;
+    public static final List<DeferredItem<TackItem>> ENGLISH_SADDLES_BLACK_DYED;
+    public static final List<DeferredItem<TackItem>> CLOTH_GIRTH_STRAPS_DYED;
+    public static final List<DeferredItem<TackItem>> CLOTH_BRIDLES_DYED;
+    public static final List<DeferredItem<TackItem>> CLOTH_BREAST_COLLARS_DYED;
+    public static final List<DeferredItem<TackItem>> ENGLISH_GIRTH_STRAPS_BROWN_DYED;
+    public static final List<DeferredItem<TackItem>> ENGLISH_BREAST_COLLARS_BROWN_DYED;
+    public static final List<DeferredItem<TackItem>> ENGLISH_BRIDLES_BROWN_DYED;
+    public static final List<DeferredItem<TackItem>> ENGLISH_SADDLES_BROWN_DYED;
 
 
-    public static final List<RegistryObject<TackBoxBlock>> TACKBOXES;
+    public static final List<DeferredBlock<TackBoxBlock>> TACKBOXES;
 
     public TackShopItems() {
     }
     public static void init(IEventBus eventBus) {  REGISTRY.register(eventBus); }
 
     static {
-         REGISTRY = DeferredRegister.create(Keys.ITEMS, "tretackshop");
+         //REGISTRY = DeferredItem.create(Keys.ITEMS, "tretackshop");
 
         BUTTERFLY = REGISTRY.register("butterfly",
                 () -> new Item(new Item.Properties()));
@@ -404,7 +407,7 @@ public class TackShopItems {
                 () -> new SaddlebagItem(TackItemDefinition.builder(TackType.SADDLE_BAG).withData(new TackTypeData(
                         true, Collections.emptySet(),
                         Color.ofRGB(tretackcolors[21][0], tretackcolors[21][1], tretackcolors[21][2]))).build(),
-                        (new Item.Properties()).stacksTo(16)));
+                        (new Item.Properties()).stacksTo(16).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY)));
         AMETHYST_HORSE_ARMOR_RAINBOW = REGISTRY.register("amethyst_horse_armor_rainbow",
                 () -> new TackItem(TackItemDefinition.builder(TackType.HORSE_ARMOR).withData(new HorseArmorTypeData(
                         true, Collections.emptySet(), ColorUtil.ofDyeColor(DyeColor.WHITE),
@@ -755,7 +758,7 @@ public class TackShopItems {
                     new SaddlebagItem(TackItemDefinition.builder(TackType.SADDLE_BAG).withData(new TackTypeData(
                             true, Collections.emptySet(),
                             Color.ofRGB(tretackcolors[counter][0], tretackcolors[counter][1], tretackcolors[counter][2]))).build(),
-                            (new Item.Properties()).stacksTo(16))
+                            (new Item.Properties()).stacksTo(16).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY))
             ));
 
             WESTERN_SADDLES.add( REGISTRY.register("western_saddle_" + counter, () ->
@@ -959,8 +962,7 @@ public class TackShopItems {
         DyeColor[] var0 = DyeColor.values();
         int var3 = var0.length;
 
-        for (int var2 = 0; var2 < var3; ++var2) {
-            DyeColor color = var0[var2];
+        for (DyeColor color : var0) {
             ADVENTURE_SADDLES_DYED.add(REGISTRY.register("adventure_saddle_" + color.getName(), () ->
                     new TackItem(TackItemDefinition.builder(TackType.SADDLE).withData(new SaddleTypeData(
                             true, Collections.emptySet(), ColorUtil.ofDyeColor(color),
@@ -1104,9 +1106,9 @@ public class TackShopItems {
                                     ColorUtil.ofDyeColor(color))).build(),
                             (new Item.Properties()).stacksTo(16))
             ));
-            FLYMASKS.add( REGISTRY.register("flymask_" + color.getName(), () ->
+            FLYMASKS.add(REGISTRY.register("flymask_" + color.getName(), () ->
                     new TackItem(TackItemDefinition.builder(TackType.HALTER).withData(new TackTypeData
-                            (false, Collections.emptySet(),  ColorUtil.ofDyeColor(color))).build(),
+                            (false, Collections.emptySet(), ColorUtil.ofDyeColor(color))).build(),
                             (new Item.Properties()).stacksTo(16))
             ));
         }

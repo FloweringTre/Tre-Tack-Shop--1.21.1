@@ -1,19 +1,21 @@
 package com.kyraltre.tretackshop.registry;
 
 
-import com.alaharranhonor.swem.forge.ModRef;
-import com.alaharranhonor.swem.forge.community.RackType;
-import com.alaharranhonor.swem.forge.community.TackType;
-import com.alaharranhonor.swem.forge.community.content.tack.type.*;
-import com.alaharranhonor.swem.forge.items.tack.*;
-import com.alaharranhonor.swem.forge.tack.TackItemDefinition;
-import com.alaharranhonor.swem.forge.util.ColorUtil;
+import com.alaharranhonor.swem.ModRef;
+import com.alaharranhonor.swem.community.RackType;
+import com.alaharranhonor.swem.community.TackType;
+import com.alaharranhonor.swem.community.content.tack.type.*;
+import com.alaharranhonor.swem.item.tack.*;
+import com.alaharranhonor.swem.tack.TackItemDefinition;
+import com.alaharranhonor.swem.util.ColorUtil;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries.Keys;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.world.item.component.ItemContainerContents;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +24,7 @@ import java.util.List;
 
 
 public class AwardShopItems {
-    public static final DeferredRegister<Item> REGISTRY;
+    public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems("tretackshop");
 
     static int [][] tretackcolors= { // A collection of RGB colors to reference for blanket racks
             { 236, 226, 226 }, // "tre and moon white" [0]
@@ -44,175 +46,175 @@ public class AwardShopItems {
 
 
 // THIS IS FOR AWARD ITEMS THAT CAN NOT BE CRAFTED
-    public static final List<RegistryObject<Item>> AWARD_FLAGS;
-    public static final RegistryObject<Item> FLAG_MONARCH;
-    public static final RegistryObject<Item> FLAG_MORPHO;
-    public static final RegistryObject<Item> FLAG_HOUND;
-    public static final List<RegistryObject<Item>> AWARD_SIGN_COVERS;
-    public static final RegistryObject<Item> RILEY_SIGN_COVER_MONARCH;
-    public static final RegistryObject<Item> RILEY_SIGN_COVER_MORPHO;
-    public static final RegistryObject<Item> RILEY_SIGN_COVER_HOUND;
-    public static final RegistryObject<Item> FABRIC_SIGN_COVER_MONARCH;
-    public static final RegistryObject<Item> FABRIC_SIGN_COVER_MORPHO;
-    public static final RegistryObject<Item> FABRIC_SIGN_COVER_HOUND;
+    public static final List<DeferredItem<Item>> AWARD_FLAGS;
+    public static final DeferredItem<Item> FLAG_MONARCH;
+    public static final DeferredItem<Item> FLAG_MORPHO;
+    public static final DeferredItem<Item> FLAG_HOUND;
+    public static final List<DeferredItem<Item>> AWARD_SIGN_COVERS;
+    public static final DeferredItem<Item> RILEY_SIGN_COVER_MONARCH;
+    public static final DeferredItem<Item> RILEY_SIGN_COVER_MORPHO;
+    public static final DeferredItem<Item> RILEY_SIGN_COVER_HOUND;
+    public static final DeferredItem<Item> FABRIC_SIGN_COVER_MONARCH;
+    public static final DeferredItem<Item> FABRIC_SIGN_COVER_MORPHO;
+    public static final DeferredItem<Item> FABRIC_SIGN_COVER_HOUND;
 
     // BUTTERFLY TACK ITEMS - MORPHO
-    public static final RegistryObject<TackItem> HALTER_MORPHO;
-    public static final RegistryObject<TackItem> FLYMASK_MORPHO;
-    public static final RegistryObject<TackItem> PASTURE_BLANKET_MORPHO;
-    public static final RegistryObject<TackItem> ADVENTURE_BLANKET_MORPHO;
-    public static final RegistryObject<TackItem> ENGLISH_BLANKET_MORPHO;
-    public static final RegistryObject<TackItem> WESTERN_BLANKET_MORPHO;
-    public static final RegistryObject<TackItem> ADVENTURE_LEG_WRAPS_MORPHO;
-    public static final RegistryObject<TackItem> ENGLISH_LEG_WRAPS_MORPHO;
-    public static final RegistryObject<TackItem> WESTERN_LEG_WRAPS_MORPHO;
-    public static final RegistryObject<TackItem> ADVENTURE_SADDLE_MORPHO;
-    public static final RegistryObject<TackItem> WESTERN_SADDLE_MORPHO;
-    public static final RegistryObject<TackItem> ENGLISH_SADDLE_MORPHO;
-    public static final RegistryObject<TackItem> ADVENTURE_BREAST_COLLAR_MORPHO;
-    public static final RegistryObject<TackItem> WESTERN_BREAST_COLLAR_MORPHO;
-    public static final RegistryObject<TackItem> ENGLISH_BREAST_COLLAR_MORPHO;
-    public static final RegistryObject<TackItem> QUARTER_SHEET_MORPHO;
-    public static final RegistryObject<TackItem> ADVENTURE_BRIDLE_MORPHO;
-    public static final RegistryObject<TackItem> WESTERN_BRIDLE_MORPHO;
-    public static final RegistryObject<TackItem> ENGLISH_BRIDLE_MORPHO;
-    public static final RegistryObject<TackItem> ADVENTURE_GIRTH_STRAP_MORPHO;
-    public static final RegistryObject<TackItem> WESTERN_GIRTH_STRAP_MORPHO;
-    public static final RegistryObject<TackItem> ENGLISH_GIRTH_STRAP_MORPHO;
-    public static final RegistryObject<TackItem> CLOTH_HORSE_ARMOR_MORPHO;
-    public static final RegistryObject<SaddlebagItem> SADDLE_BAG_MORPHO;
-    public static final RegistryObject<TackItem> BITLESS_BRIDLE_MORPHO;
-    public static final RegistryObject<TackItem> BAREBACK_BLANKET_MORPHO;
+    public static final DeferredItem<TackItem> HALTER_MORPHO;
+    public static final DeferredItem<TackItem> FLYMASK_MORPHO;
+    public static final DeferredItem<TackItem> PASTURE_BLANKET_MORPHO;
+    public static final DeferredItem<TackItem> ADVENTURE_BLANKET_MORPHO;
+    public static final DeferredItem<TackItem> ENGLISH_BLANKET_MORPHO;
+    public static final DeferredItem<TackItem> WESTERN_BLANKET_MORPHO;
+    public static final DeferredItem<TackItem> ADVENTURE_LEG_WRAPS_MORPHO;
+    public static final DeferredItem<TackItem> ENGLISH_LEG_WRAPS_MORPHO;
+    public static final DeferredItem<TackItem> WESTERN_LEG_WRAPS_MORPHO;
+    public static final DeferredItem<TackItem> ADVENTURE_SADDLE_MORPHO;
+    public static final DeferredItem<TackItem> WESTERN_SADDLE_MORPHO;
+    public static final DeferredItem<TackItem> ENGLISH_SADDLE_MORPHO;
+    public static final DeferredItem<TackItem> ADVENTURE_BREAST_COLLAR_MORPHO;
+    public static final DeferredItem<TackItem> WESTERN_BREAST_COLLAR_MORPHO;
+    public static final DeferredItem<TackItem> ENGLISH_BREAST_COLLAR_MORPHO;
+    public static final DeferredItem<TackItem> QUARTER_SHEET_MORPHO;
+    public static final DeferredItem<TackItem> ADVENTURE_BRIDLE_MORPHO;
+    public static final DeferredItem<TackItem> WESTERN_BRIDLE_MORPHO;
+    public static final DeferredItem<TackItem> ENGLISH_BRIDLE_MORPHO;
+    public static final DeferredItem<TackItem> ADVENTURE_GIRTH_STRAP_MORPHO;
+    public static final DeferredItem<TackItem> WESTERN_GIRTH_STRAP_MORPHO;
+    public static final DeferredItem<TackItem> ENGLISH_GIRTH_STRAP_MORPHO;
+    public static final DeferredItem<TackItem> CLOTH_HORSE_ARMOR_MORPHO;
+    public static final DeferredItem<SaddlebagItem> SADDLE_BAG_MORPHO;
+    public static final DeferredItem<TackItem> BITLESS_BRIDLE_MORPHO;
+    public static final DeferredItem<TackItem> BAREBACK_BLANKET_MORPHO;
 
 
     // BUTTERFLY TACK ITEMS - MONARCH
-    public static final RegistryObject<TackItem> HALTER_MONARCH;
-    public static final RegistryObject<TackItem> FLYMASK_MONARCH;
-    public static final RegistryObject<TackItem> PASTURE_BLANKET_MONARCH;
-    public static final RegistryObject<TackItem> ADVENTURE_BLANKET_MONARCH;
-    public static final RegistryObject<TackItem> ENGLISH_BLANKET_MONARCH;
-    public static final RegistryObject<TackItem> WESTERN_BLANKET_MONARCH;
-    public static final RegistryObject<TackItem> ADVENTURE_LEG_WRAPS_MONARCH;
-    public static final RegistryObject<TackItem> ENGLISH_LEG_WRAPS_MONARCH;
-    public static final RegistryObject<TackItem> WESTERN_LEG_WRAPS_MONARCH;
-    public static final RegistryObject<TackItem> ADVENTURE_SADDLE_MONARCH;
-    public static final RegistryObject<TackItem> WESTERN_SADDLE_MONARCH;
-    public static final RegistryObject<TackItem> ENGLISH_SADDLE_MONARCH;
-    public static final RegistryObject<TackItem> ADVENTURE_BREAST_COLLAR_MONARCH;
-    public static final RegistryObject<TackItem> WESTERN_BREAST_COLLAR_MONARCH;
-    public static final RegistryObject<TackItem> ENGLISH_BREAST_COLLAR_MONARCH;
-    public static final RegistryObject<TackItem> QUARTER_SHEET_MONARCH;
-    public static final RegistryObject<TackItem> ADVENTURE_BRIDLE_MONARCH;
-    public static final RegistryObject<TackItem> WESTERN_BRIDLE_MONARCH;
-    public static final RegistryObject<TackItem> ENGLISH_BRIDLE_MONARCH;
-    public static final RegistryObject<TackItem> ADVENTURE_GIRTH_STRAP_MONARCH;
-    public static final RegistryObject<TackItem> WESTERN_GIRTH_STRAP_MONARCH;
-    public static final RegistryObject<TackItem> ENGLISH_GIRTH_STRAP_MONARCH;
-    public static final RegistryObject<TackItem> CLOTH_HORSE_ARMOR_MONARCH;
-    public static final RegistryObject<SaddlebagItem> SADDLE_BAG_MONARCH;
-    public static final RegistryObject<TackItem> BITLESS_BRIDLE_MONARCH;
-    public static final RegistryObject<TackItem> BAREBACK_BLANKET_MONARCH;
+    public static final DeferredItem<TackItem> HALTER_MONARCH;
+    public static final DeferredItem<TackItem> FLYMASK_MONARCH;
+    public static final DeferredItem<TackItem> PASTURE_BLANKET_MONARCH;
+    public static final DeferredItem<TackItem> ADVENTURE_BLANKET_MONARCH;
+    public static final DeferredItem<TackItem> ENGLISH_BLANKET_MONARCH;
+    public static final DeferredItem<TackItem> WESTERN_BLANKET_MONARCH;
+    public static final DeferredItem<TackItem> ADVENTURE_LEG_WRAPS_MONARCH;
+    public static final DeferredItem<TackItem> ENGLISH_LEG_WRAPS_MONARCH;
+    public static final DeferredItem<TackItem> WESTERN_LEG_WRAPS_MONARCH;
+    public static final DeferredItem<TackItem> ADVENTURE_SADDLE_MONARCH;
+    public static final DeferredItem<TackItem> WESTERN_SADDLE_MONARCH;
+    public static final DeferredItem<TackItem> ENGLISH_SADDLE_MONARCH;
+    public static final DeferredItem<TackItem> ADVENTURE_BREAST_COLLAR_MONARCH;
+    public static final DeferredItem<TackItem> WESTERN_BREAST_COLLAR_MONARCH;
+    public static final DeferredItem<TackItem> ENGLISH_BREAST_COLLAR_MONARCH;
+    public static final DeferredItem<TackItem> QUARTER_SHEET_MONARCH;
+    public static final DeferredItem<TackItem> ADVENTURE_BRIDLE_MONARCH;
+    public static final DeferredItem<TackItem> WESTERN_BRIDLE_MONARCH;
+    public static final DeferredItem<TackItem> ENGLISH_BRIDLE_MONARCH;
+    public static final DeferredItem<TackItem> ADVENTURE_GIRTH_STRAP_MONARCH;
+    public static final DeferredItem<TackItem> WESTERN_GIRTH_STRAP_MONARCH;
+    public static final DeferredItem<TackItem> ENGLISH_GIRTH_STRAP_MONARCH;
+    public static final DeferredItem<TackItem> CLOTH_HORSE_ARMOR_MONARCH;
+    public static final DeferredItem<SaddlebagItem> SADDLE_BAG_MONARCH;
+    public static final DeferredItem<TackItem> BITLESS_BRIDLE_MONARCH;
+    public static final DeferredItem<TackItem> BAREBACK_BLANKET_MONARCH;
 
     // RILEY CASPER TACK ITEMS - HOUND
-    public static final RegistryObject<TackItem> HALTER_HOUND;
-    public static final RegistryObject<TackItem> FLYMASK_HOUND;
-    public static final RegistryObject<TackItem> PASTURE_BLANKET_HOUND;
-    public static final RegistryObject<TackItem> PASTURE_BLANKET_HOUND_ARMORED;
-    public static final RegistryObject<TackItem> ADVENTURE_BLANKET_HOUND;
-    public static final RegistryObject<TackItem> ENGLISH_BLANKET_HOUND;
-    public static final RegistryObject<TackItem> WESTERN_BLANKET_HOUND;
-    public static final RegistryObject<TackItem> ADVENTURE_LEG_WRAPS_HOUND;
-    public static final RegistryObject<TackItem> ENGLISH_LEG_WRAPS_HOUND;
-    public static final RegistryObject<TackItem> WESTERN_LEG_WRAPS_HOUND;
-    public static final RegistryObject<TackItem> ADVENTURE_SADDLE_HOUND;
-    public static final RegistryObject<TackItem> WESTERN_SADDLE_HOUND;
-    public static final RegistryObject<TackItem> ENGLISH_SADDLE_HOUND;
-    public static final RegistryObject<TackItem> ADVENTURE_BREAST_COLLAR_HOUND;
-    public static final RegistryObject<TackItem> WESTERN_BREAST_COLLAR_HOUND;
-    public static final RegistryObject<TackItem> ENGLISH_BREAST_COLLAR_HOUND;
-    public static final RegistryObject<TackItem> QUARTER_SHEET_HOUND;
-    public static final RegistryObject<TackItem> ADVENTURE_BRIDLE_HOUND;
-    public static final RegistryObject<TackItem> WESTERN_BRIDLE_HOUND;
-    public static final RegistryObject<TackItem> ENGLISH_BRIDLE_HOUND;
-    public static final RegistryObject<TackItem> ADVENTURE_GIRTH_STRAP_HOUND;
-    public static final RegistryObject<TackItem> WESTERN_GIRTH_STRAP_HOUND;
-    public static final RegistryObject<TackItem> ENGLISH_GIRTH_STRAP_HOUND;
-    public static final RegistryObject<TackItem> CLOTH_HORSE_ARMOR_HOUND;
-    public static final RegistryObject<SaddlebagItem> SADDLE_BAG_HOUND;
-    public static final RegistryObject<TackItem> BITLESS_BRIDLE_HOUND;
-    public static final RegistryObject<TackItem> BAREBACK_BLANKET_HOUND;
+    public static final DeferredItem<TackItem> HALTER_HOUND;
+    public static final DeferredItem<TackItem> FLYMASK_HOUND;
+    public static final DeferredItem<TackItem> PASTURE_BLANKET_HOUND;
+    public static final DeferredItem<TackItem> PASTURE_BLANKET_HOUND_ARMORED;
+    public static final DeferredItem<TackItem> ADVENTURE_BLANKET_HOUND;
+    public static final DeferredItem<TackItem> ENGLISH_BLANKET_HOUND;
+    public static final DeferredItem<TackItem> WESTERN_BLANKET_HOUND;
+    public static final DeferredItem<TackItem> ADVENTURE_LEG_WRAPS_HOUND;
+    public static final DeferredItem<TackItem> ENGLISH_LEG_WRAPS_HOUND;
+    public static final DeferredItem<TackItem> WESTERN_LEG_WRAPS_HOUND;
+    public static final DeferredItem<TackItem> ADVENTURE_SADDLE_HOUND;
+    public static final DeferredItem<TackItem> WESTERN_SADDLE_HOUND;
+    public static final DeferredItem<TackItem> ENGLISH_SADDLE_HOUND;
+    public static final DeferredItem<TackItem> ADVENTURE_BREAST_COLLAR_HOUND;
+    public static final DeferredItem<TackItem> WESTERN_BREAST_COLLAR_HOUND;
+    public static final DeferredItem<TackItem> ENGLISH_BREAST_COLLAR_HOUND;
+    public static final DeferredItem<TackItem> QUARTER_SHEET_HOUND;
+    public static final DeferredItem<TackItem> ADVENTURE_BRIDLE_HOUND;
+    public static final DeferredItem<TackItem> WESTERN_BRIDLE_HOUND;
+    public static final DeferredItem<TackItem> ENGLISH_BRIDLE_HOUND;
+    public static final DeferredItem<TackItem> ADVENTURE_GIRTH_STRAP_HOUND;
+    public static final DeferredItem<TackItem> WESTERN_GIRTH_STRAP_HOUND;
+    public static final DeferredItem<TackItem> ENGLISH_GIRTH_STRAP_HOUND;
+    public static final DeferredItem<TackItem> CLOTH_HORSE_ARMOR_HOUND;
+    public static final DeferredItem<SaddlebagItem> SADDLE_BAG_HOUND;
+    public static final DeferredItem<TackItem> BITLESS_BRIDLE_HOUND;
+    public static final DeferredItem<TackItem> BAREBACK_BLANKET_HOUND;
 
     // TACK ITEMS
-    public static final List<RegistryObject<TackItem>> AWARD_HALTERS;
-    public static final List<RegistryObject<TackItem>> AWARD_FLYMASKS;
-    public static final List<RegistryObject<TackItem>> AWARD_PASTURE_BLANKETS;
-    public static final List<RegistryObject<TackItem>> AWARD_PASTURE_BLANKETS_ARMORED;
-    public static final List<RegistryObject<TackItem>> AWARD_ADVENTURE_BLANKETS;
-    public static final List<RegistryObject<TackItem>> AWARD_ENGLISH_BLANKETS;
-    public static final List<RegistryObject<TackItem>> AWARD_WESTERN_BLANKETS;
-    public static final List<RegistryObject<TackItem>> AWARD_ADVENTURE_LEG_WRAPS;
-    public static final List<RegistryObject<TackItem>> AWARD_ENGLISH_LEG_WRAPS;
-    public static final List<RegistryObject<TackItem>> AWARD_WESTERN_LEG_WRAPS;
-    public static final List<RegistryObject<TackItem>> AWARD_ADVENTURE_SADDLES;
-    public static final List<RegistryObject<TackItem>> AWARD_WESTERN_SADDLES;
-    public static final List<RegistryObject<TackItem>> AWARD_ENGLISH_SADDLES;
-    public static final List<RegistryObject<TackItem>> AWARD_ADVENTURE_BREAST_COLLARS;
-    public static final List<RegistryObject<TackItem>> AWARD_WESTERN_BREAST_COLLARS;
-    public static final List<RegistryObject<TackItem>> AWARD_ENGLISH_BREAST_COLLARS;
-    public static final List<RegistryObject<TackItem>> AWARD_QUARTER_SHEETS;
-    public static final List<RegistryObject<TackItem>> AWARD_ADVENTURE_BRIDLES;
-    public static final List<RegistryObject<TackItem>> AWARD_WESTERN_BRIDLES;
-    public static final List<RegistryObject<TackItem>> AWARD_ENGLISH_BRIDLES;
-    public static final List<RegistryObject<TackItem>> AWARD_ADVENTURE_GIRTH_STRAPS;
-    public static final List<RegistryObject<TackItem>> AWARD_WESTERN_GIRTH_STRAPS;
-    public static final List<RegistryObject<TackItem>> AWARD_ENGLISH_GIRTH_STRAPS;
-    public static final List<RegistryObject<SaddlebagItem>> AWARD_SADDLE_BAGS;
-    public static final List<RegistryObject<TackItem>> AWARD_CLOTH_ARMOR;
+    public static final List<DeferredItem<TackItem>> AWARD_HALTERS;
+    public static final List<DeferredItem<TackItem>> AWARD_FLYMASKS;
+    public static final List<DeferredItem<TackItem>> AWARD_PASTURE_BLANKETS;
+    public static final List<DeferredItem<TackItem>> AWARD_PASTURE_BLANKETS_ARMORED;
+    public static final List<DeferredItem<TackItem>> AWARD_ADVENTURE_BLANKETS;
+    public static final List<DeferredItem<TackItem>> AWARD_ENGLISH_BLANKETS;
+    public static final List<DeferredItem<TackItem>> AWARD_WESTERN_BLANKETS;
+    public static final List<DeferredItem<TackItem>> AWARD_ADVENTURE_LEG_WRAPS;
+    public static final List<DeferredItem<TackItem>> AWARD_ENGLISH_LEG_WRAPS;
+    public static final List<DeferredItem<TackItem>> AWARD_WESTERN_LEG_WRAPS;
+    public static final List<DeferredItem<TackItem>> AWARD_ADVENTURE_SADDLES;
+    public static final List<DeferredItem<TackItem>> AWARD_WESTERN_SADDLES;
+    public static final List<DeferredItem<TackItem>> AWARD_ENGLISH_SADDLES;
+    public static final List<DeferredItem<TackItem>> AWARD_ADVENTURE_BREAST_COLLARS;
+    public static final List<DeferredItem<TackItem>> AWARD_WESTERN_BREAST_COLLARS;
+    public static final List<DeferredItem<TackItem>> AWARD_ENGLISH_BREAST_COLLARS;
+    public static final List<DeferredItem<TackItem>> AWARD_QUARTER_SHEETS;
+    public static final List<DeferredItem<TackItem>> AWARD_ADVENTURE_BRIDLES;
+    public static final List<DeferredItem<TackItem>> AWARD_WESTERN_BRIDLES;
+    public static final List<DeferredItem<TackItem>> AWARD_ENGLISH_BRIDLES;
+    public static final List<DeferredItem<TackItem>> AWARD_ADVENTURE_GIRTH_STRAPS;
+    public static final List<DeferredItem<TackItem>> AWARD_WESTERN_GIRTH_STRAPS;
+    public static final List<DeferredItem<TackItem>> AWARD_ENGLISH_GIRTH_STRAPS;
+    public static final List<DeferredItem<SaddlebagItem>> AWARD_SADDLE_BAGS;
+    public static final List<DeferredItem<TackItem>> AWARD_CLOTH_ARMOR;
 
 
 //// AWARD RIBBONS AND TROPHIES
-    public static  final RegistryObject<Item> SIGN_COVER_GRAND;
-    public static  final RegistryObject<Item> SIGN_COVER_RESERVE;
-    public static  final RegistryObject<Item> RIBBON_THREE_TAILS_GRAND;
-    public static  final RegistryObject<Item> RIBBON_THREE_TAILS_RESERVE;
-    public static final List<RegistryObject<Item>> RIBBON_THREE_TAILS;
-    public static final List<RegistryObject<Item>> RIBBON_TWO_TAILS;
-    public static final List<RegistryObject<Item>> RIBBON_ONE_TAIL;
-    public static final List<RegistryObject<Item>> ROSETTE;
-    public static final List<RegistryObject<Item>> TRE_RIBBON_THREE_TAILS;
-    public static final List<RegistryObject<Item>> TRE_RIBBON_TWO_TAILS;
-    public static final List<RegistryObject<Item>> TRE_RIBBON_ONE_TAIL;
-    public static final List<RegistryObject<Item>> TRE_ROSETTE;
+    public static  final DeferredItem<Item> SIGN_COVER_GRAND;
+    public static  final DeferredItem<Item> SIGN_COVER_RESERVE;
+    public static  final DeferredItem<Item> RIBBON_THREE_TAILS_GRAND;
+    public static  final DeferredItem<Item> RIBBON_THREE_TAILS_RESERVE;
+    public static final List<DeferredItem<Item>> RIBBON_THREE_TAILS;
+    public static final List<DeferredItem<Item>> RIBBON_TWO_TAILS;
+    public static final List<DeferredItem<Item>> RIBBON_ONE_TAIL;
+    public static final List<DeferredItem<Item>> ROSETTE;
+    public static final List<DeferredItem<Item>> TRE_RIBBON_THREE_TAILS;
+    public static final List<DeferredItem<Item>> TRE_RIBBON_TWO_TAILS;
+    public static final List<DeferredItem<Item>> TRE_RIBBON_ONE_TAIL;
+    public static final List<DeferredItem<Item>> TRE_ROSETTE;
 
-    public static final RegistryObject<Item> MORPHO_RIBBON_THREE_TAILS;
-    public static final RegistryObject<Item> MORPHO_RIBBON_TWO_TAILS;
-    public static final RegistryObject<Item> MORPHO_RIBBON_ONE_TAIL;
-    public static final RegistryObject<Item> MORPHO_ROSETTE;
-    public static final RegistryObject<Item> MONARCH_RIBBON_THREE_TAILS;
-    public static final RegistryObject<Item> MONARCH_RIBBON_TWO_TAILS;
-    public static final RegistryObject<Item> MONARCH_RIBBON_ONE_TAIL;
-    public static final RegistryObject<Item> MONARCH_ROSETTE;
+    public static final DeferredItem<Item> MORPHO_RIBBON_THREE_TAILS;
+    public static final DeferredItem<Item> MORPHO_RIBBON_TWO_TAILS;
+    public static final DeferredItem<Item> MORPHO_RIBBON_ONE_TAIL;
+    public static final DeferredItem<Item> MORPHO_ROSETTE;
+    public static final DeferredItem<Item> MONARCH_RIBBON_THREE_TAILS;
+    public static final DeferredItem<Item> MONARCH_RIBBON_TWO_TAILS;
+    public static final DeferredItem<Item> MONARCH_RIBBON_ONE_TAIL;
+    public static final DeferredItem<Item> MONARCH_ROSETTE;
 
-    public static final RegistryObject<Item> HOUND_RIBBON_THREE_TAILS;
-    public static final RegistryObject<Item> HOUND_RIBBON_TWO_TAILS;
-    public static final RegistryObject<Item> HOUND_RIBBON_ONE_TAIL;
-    public static final RegistryObject<Item> HOUND_ROSETTE;
+    public static final DeferredItem<Item> HOUND_RIBBON_THREE_TAILS;
+    public static final DeferredItem<Item> HOUND_RIBBON_TWO_TAILS;
+    public static final DeferredItem<Item> HOUND_RIBBON_ONE_TAIL;
+    public static final DeferredItem<Item> HOUND_ROSETTE;
 
-    public static final RegistryObject<Item> TROPHY_1;
-    public static final RegistryObject<Item> TROPHY_2;
-    public static final RegistryObject<Item> TROPHY_3;
-    public static final RegistryObject<Item> MEDAL_1;
-    public static final RegistryObject<Item> MEDAL_2;
-    public static final RegistryObject<Item> MEDAL_3;
-    public static final RegistryObject<Item> FLORAL_GOLD;
-    public static final RegistryObject<Item> FLORAL_SILVER;
-    public static final RegistryObject<Item> FLORAL_BRONZE;
-    public static final RegistryObject<Item> SUN_TROPHY;
-    public static final RegistryObject<Item> MOON_TROPHY;
-    public static  final RegistryObject<Item> SIGN_COVER_HEART_RED;
-    public static  final RegistryObject<Item> SIGN_COVER_HEART_PINK;
-    public static  final RegistryObject<Item> SIGN_COVER_HEART_BLUE;
-    public static  final RegistryObject<Item> SIGN_COVER_SNOWFLAKE;
+    public static final DeferredItem<Item> TROPHY_1;
+    public static final DeferredItem<Item> TROPHY_2;
+    public static final DeferredItem<Item> TROPHY_3;
+    public static final DeferredItem<Item> MEDAL_1;
+    public static final DeferredItem<Item> MEDAL_2;
+    public static final DeferredItem<Item> MEDAL_3;
+    public static final DeferredItem<Item> FLORAL_GOLD;
+    public static final DeferredItem<Item> FLORAL_SILVER;
+    public static final DeferredItem<Item> FLORAL_BRONZE;
+    public static final DeferredItem<Item> SUN_TROPHY;
+    public static final DeferredItem<Item> MOON_TROPHY;
+    public static  final DeferredItem<Item> SIGN_COVER_HEART_RED;
+    public static  final DeferredItem<Item> SIGN_COVER_HEART_PINK;
+    public static  final DeferredItem<Item> SIGN_COVER_HEART_BLUE;
+    public static  final DeferredItem<Item> SIGN_COVER_SNOWFLAKE;
 
 
 
@@ -221,7 +223,7 @@ public class AwardShopItems {
     public static void init(IEventBus eventBus) {  REGISTRY.register(eventBus); }
 
     static {
-         REGISTRY = DeferredRegister.create(Keys.ITEMS, "tretackshop");
+         //REGISTRY = DeferredRegister.create(Keys.ITEMS, "tretackshop");
          
 // TACK ITEMS
         // BUTTERFLY - MORPHO -- Uncraftable Blue Morpho Tack
@@ -275,7 +277,7 @@ public class AwardShopItems {
                 () -> new SaddlebagItem(TackItemDefinition.builder(TackType.SADDLE_BAG).withData(new TackTypeData(
                         true, Collections.emptySet(),
                         ColorUtil.ofDyeColor(DyeColor.WHITE))).build(),
-                        (new Item.Properties()).stacksTo(16)));
+                        (new Item.Properties()).stacksTo(16).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY)));
 
 
         WESTERN_SADDLE_MORPHO = REGISTRY.register("western_saddle_morpho",
@@ -431,7 +433,7 @@ public class AwardShopItems {
                 () -> new SaddlebagItem(TackItemDefinition.builder(TackType.SADDLE_BAG).withData(new TackTypeData(
                         true, Collections.emptySet(),
                         ColorUtil.ofDyeColor(DyeColor.WHITE))).build(),
-                        (new Item.Properties()).stacksTo(16)));
+                        (new Item.Properties()).stacksTo(16).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY)));
 
         WESTERN_SADDLE_MONARCH = REGISTRY.register("western_saddle_monarch",
                 () -> new TackItem(TackItemDefinition.builder(TackType.SADDLE).withData(new SaddleTypeData(
@@ -587,7 +589,7 @@ public class AwardShopItems {
                 () -> new SaddlebagItem(TackItemDefinition.builder(TackType.SADDLE_BAG).withData(new TackTypeData(
                         true, Collections.emptySet(),
                         ColorUtil.ofDyeColor(DyeColor.WHITE))).build(),
-                        (new Item.Properties()).stacksTo(16)));
+                        (new Item.Properties()).stacksTo(16).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY)));
 
 
         WESTERN_SADDLE_HOUND = REGISTRY.register("western_saddle_hound",
@@ -796,7 +798,7 @@ public class AwardShopItems {
                     new SaddlebagItem(TackItemDefinition.builder(TackType.SADDLE_BAG).withData(new TackTypeData(
                             true, Collections.emptySet(),
                             ColorUtil.ofDyeColor(DyeColor.WHITE))).build(),
-                            (new Item.Properties()).stacksTo(16))
+                            (new Item.Properties()).stacksTo(16).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY))
             ));
         }
 
@@ -1000,21 +1002,20 @@ public class AwardShopItems {
         DyeColor[] var0 = DyeColor.values();
         int var3 = var0.length;
 
-        for(int var2 = 0; var2 < var3; ++var2) {
-            DyeColor color = var0[var2];
-             RIBBON_THREE_TAILS.add( REGISTRY.register("ribbon_three_tails_" + color.getName(), () ->
-                     new Item(new Item.Properties() )
-             ));
-             RIBBON_TWO_TAILS.add( REGISTRY.register("ribbon_two_tails_" + color.getName(), () ->
-                     new Item(new Item.Properties() )
-             ));
-             RIBBON_ONE_TAIL.add( REGISTRY.register("ribbon_one_tail_" + color.getName(), () ->
-                     new Item(new Item.Properties() )
-             ));
-             ROSETTE.add( REGISTRY.register("rosette_" + color.getName(), () ->
-                     new Item(new Item.Properties() )
-             ));
-         }
+        for (DyeColor color : var0) {
+            RIBBON_THREE_TAILS.add(REGISTRY.register("ribbon_three_tails_" + color.getName(), () ->
+                    new Item(new Item.Properties())
+            ));
+            RIBBON_TWO_TAILS.add(REGISTRY.register("ribbon_two_tails_" + color.getName(), () ->
+                    new Item(new Item.Properties())
+            ));
+            RIBBON_ONE_TAIL.add(REGISTRY.register("ribbon_one_tail_" + color.getName(), () ->
+                    new Item(new Item.Properties())
+            ));
+            ROSETTE.add(REGISTRY.register("rosette_" + color.getName(), () ->
+                    new Item(new Item.Properties())
+            ));
+        }
 
     // One off award items
         RIBBON_THREE_TAILS_GRAND =  REGISTRY.register("ribbon_three_tails_grand",

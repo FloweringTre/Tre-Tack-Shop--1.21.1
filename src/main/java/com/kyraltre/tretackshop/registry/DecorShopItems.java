@@ -1,19 +1,19 @@
 package com.kyraltre.tretackshop.registry;
 
 
-import com.alaharranhonor.swem.forge.community.content.tack.type.*;
+import com.alaharranhonor.swem.community.content.tack.type.*;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries.Keys;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DecorShopItems {
-    public static final DeferredRegister<Item> REGISTRY;
+    public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems("tretackshop");
 
     static int [][] tretackcolors= { // A collection of RGB colors to reference for blanket racks
             { 236, 226, 226 }, // "tre and moon white" [0]
@@ -34,44 +34,44 @@ public class DecorShopItems {
     };
 
     // THIS IS FOR TACK REGISTRY THAT __CAN__ BE CRAFTED
-    public static final RegistryObject<Item> FLAG_RAINBOW;
-    public static final List<RegistryObject<Item>> FLAGS;
-    public static final List<RegistryObject<Item>> FLAGS_BUTTERFLY;
-    public static final List<RegistryObject<Item>> FLAGS_DYED;
+    public static final DeferredItem<Item> FLAG_RAINBOW;
+    public static final List<DeferredItem<Item>> FLAGS;
+    public static final List<DeferredItem<Item>> FLAGS_BUTTERFLY;
+    public static final List<DeferredItem<Item>> FLAGS_DYED;
 
-    public static final RegistryObject<Item> SIGN_COVER_SWIRL_RAINBOW;
-    public static final List<RegistryObject<Item>> SIGN_COVER_SWIRL;
-    public static final List<RegistryObject<Item>> SIGN_COVER_SWIRL_DYED;
+    public static final DeferredItem<Item> SIGN_COVER_SWIRL_RAINBOW;
+    public static final List<DeferredItem<Item>> SIGN_COVER_SWIRL;
+    public static final List<DeferredItem<Item>> SIGN_COVER_SWIRL_DYED;
 
-    public static final RegistryObject<Item> SIGN_COVER_LOOPED_RAINBOW;
-    public static final List<RegistryObject<Item>> SIGN_COVER_LOOPED;
-    public static final List<RegistryObject<Item>> SIGN_COVER_LOOPED_DYED;
+    public static final DeferredItem<Item> SIGN_COVER_LOOPED_RAINBOW;
+    public static final List<DeferredItem<Item>> SIGN_COVER_LOOPED;
+    public static final List<DeferredItem<Item>> SIGN_COVER_LOOPED_DYED;
 
-    public static final RegistryObject<Item> SIGN_COVER_FABRIC_RAINBOW;
-    public static final List<RegistryObject<Item>> SIGN_COVER_FABRIC;
-    public static final List<RegistryObject<Item>> SIGN_COVER_FABRIC_DYED;
+    public static final DeferredItem<Item> SIGN_COVER_FABRIC_RAINBOW;
+    public static final List<DeferredItem<Item>> SIGN_COVER_FABRIC;
+    public static final List<DeferredItem<Item>> SIGN_COVER_FABRIC_DYED;
 
-    public static final RegistryObject<Item> SIGN_COVER_FLORAL_RAINBOW;
-    public static final List<RegistryObject<Item>> SIGN_COVER_FLORAL;
-    public static final List<RegistryObject<Item>> SIGN_COVER_FLORAL_DYED;
+    public static final DeferredItem<Item> SIGN_COVER_FLORAL_RAINBOW;
+    public static final List<DeferredItem<Item>> SIGN_COVER_FLORAL;
+    public static final List<DeferredItem<Item>> SIGN_COVER_FLORAL_DYED;
 
-    public static final RegistryObject<Item> SIGN_COVER_CHECKERED_RAINBOW;
-    public static final List<RegistryObject<Item>> SIGN_COVER_CHECKERED;
-    public static final List<RegistryObject<Item>> SIGN_COVER_CHECKERED_DYED;
+    public static final DeferredItem<Item> SIGN_COVER_CHECKERED_RAINBOW;
+    public static final List<DeferredItem<Item>> SIGN_COVER_CHECKERED;
+    public static final List<DeferredItem<Item>> SIGN_COVER_CHECKERED_DYED;
 
-    public static final RegistryObject<Item> SIGN_COVER_RILEY_RAINBOW;
-    public static final List<RegistryObject<Item>> SIGN_COVER_RILEY;
-    public static final List<RegistryObject<Item>> SIGN_COVER_RILEY_DYED;
-    public static final RegistryObject<Item> SIGN_COVER_RILEY_LIGHT_METAL;
-    public static final RegistryObject<Item> SIGN_COVER_RILEY_MEDIUM_METAL;
-    public static final RegistryObject<Item> SIGN_COVER_RILEY_DARK_METAL;
+    public static final DeferredItem<Item> SIGN_COVER_RILEY_RAINBOW;
+    public static final List<DeferredItem<Item>> SIGN_COVER_RILEY;
+    public static final List<DeferredItem<Item>> SIGN_COVER_RILEY_DYED;
+    public static final DeferredItem<Item> SIGN_COVER_RILEY_LIGHT_METAL;
+    public static final DeferredItem<Item> SIGN_COVER_RILEY_MEDIUM_METAL;
+    public static final DeferredItem<Item> SIGN_COVER_RILEY_DARK_METAL;
 
     public DecorShopItems() {
     }
     public static void init(IEventBus eventBus) {  REGISTRY.register(eventBus); }
 
     static {
-         REGISTRY = DeferredRegister.create(Keys.ITEMS, "tretackshop");
+        // REGISTRY = DeferredRegister.create(Keys.ITEMS, "tretackshop");
 
         FLAG_RAINBOW = REGISTRY.register("flag_rainbow",
                 () -> new Item(new Item.Properties()));
