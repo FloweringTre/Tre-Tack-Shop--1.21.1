@@ -5,6 +5,7 @@ import com.kyraltre.tretackshop.item.AwardShopCreativeModTab;
 import com.kyraltre.tretackshop.item.BlockShopCreativeModTab;
 import com.kyraltre.tretackshop.item.TackShopCreativeModTab;
 import com.kyraltre.tretackshop.registry.*;
+import net.neoforged.fml.event.lifecycle.FMLConstructModEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -34,19 +35,21 @@ public class TreTackShop {
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public TreTackShop(ModContainer container, IEventBus modBus) {  //IEventBus modEventBus, ModContainer modContainer
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-//        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, TackShopCommonConfigs.SPEC, "tretackshop-common.toml");
-        TackShopCreativeModTab.init(modBus);
-        AwardShopCreativeModTab.init(modBus);
-        BlockShopCreativeModTab.init(modBus);
+    public TreTackShop(IEventBus modEventBus, ModContainer modContainer) {  //IEventBus modEventBus, ModContainer modContainer
+        modEventBus.addListener(this::commonSetup);
 
-        TackShopBlocks.register(modBus);
-        TackShopBlockRegistry.init(modBus);
-        AwardShopBlockRegistry.init(modBus);
-        TackShopItems.init(modBus);
-        AwardShopItems.init(modBus);
-        DecorShopItems.init(modBus);
+        NeoForge.EVENT_BUS.register(this);
+//        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, TackShopCommonConfigs.SPEC, "tretackshop-common.toml");
+        TackShopCreativeModTab.init(modEventBus);
+        AwardShopCreativeModTab.init(modEventBus);
+        BlockShopCreativeModTab.init(modEventBus);
+
+        TackShopBlocks.register(modEventBus);
+        TackShopBlockRegistry.init(modEventBus);
+        AwardShopBlockRegistry.init(modEventBus);
+        TackShopItems.init(modEventBus);
+        AwardShopItems.init(modEventBus);
+        DecorShopItems.init(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

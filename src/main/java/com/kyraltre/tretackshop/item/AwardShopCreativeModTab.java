@@ -12,33 +12,30 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.bus.api.IEventBus;
 
 public class AwardShopCreativeModTab {
     public static final DeferredRegister<CreativeModeTab> REGISTRY;
-    public static final RegistryObject<CreativeModeTab> MAIN;
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN;
 
     public AwardShopCreativeModTab() {
     }
 
-    public static void init(IEventBus bus) {REGISTRY.register(bus);
+    public static void init(IEventBus bus) {
+        REGISTRY.register(bus);
     }
 
     static {
         REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, "treawardtab");
         MAIN = REGISTRY.register("main", () -> CreativeModeTab.builder().title(Component.translatable("creativetab.treaward_tab")).icon(() -> new ItemStack(AwardShopItems.HOUND_RIBBON_THREE_TAILS.get()))
-            .displayItems((pParameters, pOutput) -> {
-                // Add items from TackShopBlockRegistry
-                AwardShopItems.REGISTRY.getEntries().forEach((registeredItem) -> {
-                    Item item = registeredItem.get();
-                    pOutput.accept(item);
-                });
-            })
+                .displayItems((pParameters, pOutput) -> {
+                    // Add items from TackShopBlockRegistry
+                    AwardShopItems.REGISTRY.getEntries().forEach((registeredItem) -> {
+                        Item item = registeredItem.get();
+                        pOutput.accept(item);
+                    });
+                })
                 .withSearchBar().build());
-    }
-
-    public static void init(IEventBus modBus) {
     }
 }
