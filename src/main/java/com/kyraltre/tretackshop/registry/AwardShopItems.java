@@ -737,7 +737,7 @@ public class AwardShopItems {
         TRE_RIBBON_ONE_TAIL = new ArrayList<>();
         TRE_ROSETTE = new ArrayList<>();
 
-        int var543 = 14;
+        int var543 = 18;
 
         //ADVENTURE TACK
         for(int var1 = 0; var543 > var1; ++var1) {
