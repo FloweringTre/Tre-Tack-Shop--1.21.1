@@ -29,16 +29,16 @@ public class AwardShopBlockRegistry {
     //public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems("tretackshop");
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(TreTackShop.MOD_ID);
-    public static final List<DeferredBlock<TackBoxBlock>> AWARD_TACK_BOX;
-    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_HOUND;
-    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_MORPHO;
-    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_MONARCH;
+//    public static final List<DeferredBlock<TackBoxBlock>> AWARD_TACK_BOX;
+//    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_HOUND;
+//    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_MORPHO;
+//    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_MONARCH;
     public static final List<DeferredBlock<HalfBarrelBlock>> HALF_BARREL_MONARCH;
     public static final List<DeferredBlock<HalfBarrelBlock>> HALF_BARREL_MORPHO;
     public static final List<DeferredBlock<HalfBarrelBlock>> HALF_BARREL_HOUND;
-    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER_MONARCH;
-    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER_MORPHO;
-    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER_HOUND;
+//    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER_MONARCH;
+//    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER_MORPHO;
+//    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER_HOUND;
     public static final List<DeferredBlock<Block>> CONE_MORPHO;
     public static final List<DeferredBlock<Block>> CONE_MONARCH;
     public static final List<DeferredBlock<Block>> CONE_HOUND;
@@ -87,16 +87,16 @@ public class AwardShopBlockRegistry {
         CONE_MONARCH = new ArrayList();
         CONE_MORPHO = new ArrayList();
         CONE_HOUND = new ArrayList();
-        AWARD_TACK_BOX = new ArrayList();
-        TACK_BOX_MONARCH = new ArrayList();
-        TACK_BOX_MORPHO = new ArrayList();
-        TACK_BOX_HOUND = new ArrayList();
+//        AWARD_TACK_BOX = new ArrayList();
+//        TACK_BOX_MONARCH = new ArrayList();
+//        TACK_BOX_MORPHO = new ArrayList();
+//        TACK_BOX_HOUND = new ArrayList();
         HALF_BARREL_MONARCH = new ArrayList();
         HALF_BARREL_MORPHO = new ArrayList();
         HALF_BARREL_HOUND = new ArrayList();
-        SLOW_FEEDER_MONARCH = new ArrayList();
-        SLOW_FEEDER_MORPHO = new ArrayList();
-        SLOW_FEEDER_HOUND = new ArrayList();
+//        SLOW_FEEDER_MONARCH = new ArrayList();
+//        SLOW_FEEDER_MORPHO = new ArrayList();
+//        SLOW_FEEDER_HOUND = new ArrayList();
 //        GRAIN_FEEDER_MONARCH = new ArrayList();
 //        GRAIN_FEEDER_MORPHO = new ArrayList();
 //        GRAIN_FEEDER_HOUND = new ArrayList();
@@ -126,7 +126,7 @@ public class AwardShopBlockRegistry {
                     return new ConeBlockItem((Block) block.get());
                 };
             }));
-                TACK_BOX_MORPHO.add(register("tack_box_" + "morpho", () -> {
+                /*TACK_BOX_MORPHO.add(register("tack_box_" + "morpho", () -> {
                     return new TackBoxBlock(Properties.of().noOcclusion().sound(SoundType.WOOD).strength(2.0F, 3.0F), 1);
                 }, (block) -> {
                     return () -> {
@@ -146,7 +146,7 @@ public class AwardShopBlockRegistry {
                     return () -> {
                         return new TackBoxBlockItem((Block) block.get());
                     };
-                }));
+                }));*/
             HALF_BARREL_MONARCH.add(register("half_barrel_"+ "monarch", () -> {
                 return new HalfBarrelBlock(Properties.of().noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F));
             }, (block) -> {
@@ -168,7 +168,7 @@ public class AwardShopBlockRegistry {
                     return new BlockItemBase((Block)block.get());
                 };
             }));
-            SLOW_FEEDER_MONARCH.add(register("slow_feeder_"+ "monarch", () -> {
+            /*SLOW_FEEDER_MONARCH.add(register("slow_feeder_"+ "monarch", () -> {
                 return new SlowFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), DyeColor.ORANGE);
             }, (block) -> {
                 return () -> {
@@ -188,7 +188,7 @@ public class AwardShopBlockRegistry {
                 return () -> {
                     return new BlockItemBase((Block)block.get());
                 };
-            }));
+            }));*/
 //            GRAIN_FEEDER_MONARCH.add(register("grain_feeder_"+ "monarch", () -> {
 //                return new GrainFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), null);
 //            }, (block) -> {
@@ -225,7 +225,7 @@ public class AwardShopBlockRegistry {
 //            }));
             }
 
-                for (int var4 = 0; var4 < 14; ++var4) {
+                /*for (int var4 = 0; var4 < 14; ++var4) {
                     int counter = var4 + 1;
 
                     AWARD_TACK_BOX.add(register("award_tack_box_" + counter, () -> {
@@ -236,6 +236,6 @@ public class AwardShopBlockRegistry {
                         };
                     }));
 
-                }
+                }*/
     }
 }

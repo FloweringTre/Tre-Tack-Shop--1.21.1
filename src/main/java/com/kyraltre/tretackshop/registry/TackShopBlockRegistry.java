@@ -28,7 +28,7 @@ public class TackShopBlockRegistry {
     //public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks("tretackshop");
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(TreTackShop.MOD_ID);
-    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX;
+/*    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX;
     public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_RAINBOW;
     public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_BAMBOO;
     public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_SWDM_BAMBOO;
@@ -45,11 +45,12 @@ public class TackShopBlockRegistry {
     public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_OAK;
     public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_SPRUCE;
     public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_WARPED;
+*/
     public static final List<DeferredBlock<Block>> CONES;
 //    public static final List<DeferredBlock<Block>> CONE_RAINBOW;
 //    public static final DeferredBlock<Block> CONE_RAINBOW;
     public static final List<DeferredBlock<HalfBarrelBlock>> HALF_BARREL;
-    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER;
+//    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER;
 //        public static final List<DeferredBlock<GrainFeederBlock>> GRAIN_FEEDER;
 //        public static final List<DeferredBlock<GrainBinBlock>> BIN_GRAIN;
 
@@ -87,6 +88,7 @@ public class TackShopBlockRegistry {
 //            return new ConeBase();
 //        });
 
+        /*
         TACK_BOX = new ArrayList();
         TACK_BOX_RAINBOW = new ArrayList();
         TACK_BOX_BAMBOO = new ArrayList();
@@ -103,10 +105,11 @@ public class TackShopBlockRegistry {
         TACK_BOX_OAK = new ArrayList();
         TACK_BOX_SPRUCE = new ArrayList();
         TACK_BOX_WARPED = new ArrayList<>();
+        */
         CONES = new ArrayList<>();
 //        CONE_RAINBOW = new ArrayList<>();
         HALF_BARREL = new ArrayList();
-        SLOW_FEEDER = new ArrayList();
+//        SLOW_FEEDER = new ArrayList();
 //        GRAIN_FEEDER = new ArrayList();
 //        BIN_GRAIN = new ArrayList();
 
@@ -121,6 +124,7 @@ public class TackShopBlockRegistry {
                     };
                 }));
 
+            /*
             TACK_BOX.add(register("tack_box_" + counter, () -> {
                 return new TackBoxBlock(Properties.of().noOcclusion().sound(SoundType.WOOD).strength(2.0F, 3.0F), 1);
             }, (block) -> {
@@ -128,6 +132,7 @@ public class TackShopBlockRegistry {
                     return new TackBoxBlockItem((Block) block.get());
                 };
             }));
+            */
             HALF_BARREL.add(register("half_barrel_" + counter, () -> {
                 return new HalfBarrelBlock(Properties.of().noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F));
             }, (block) -> {
@@ -135,6 +140,7 @@ public class TackShopBlockRegistry {
                     return new BlockItemBase((Block)block.get());
                 };
             }));
+            /*
             SLOW_FEEDER.add(register("slow_feeder_" + counter, () -> {
                 return new SlowFeederBlock(Properties.of().noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F), null);
             }, (block) -> {
@@ -142,6 +148,7 @@ public class TackShopBlockRegistry {
                     return new BlockItemBase((Block)block.get());
                 };
             }));
+            */
 //            GRAIN_FEEDER.add(register("grain_feeder_" + counter, () -> {
 //                return new GrainFeederBlock(Properties.of().noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F), null);
 //            }, (block) -> {
@@ -167,6 +174,7 @@ public class TackShopBlockRegistry {
 //                };
 //            }));
 
+            /*
             TACK_BOX_RAINBOW.add(register("tack_box_" + "rainbow", () -> {
                 return new TackBoxBlock(Properties.of().noOcclusion().sound(SoundType.WOOD).strength(2.0F, 3.0F), 1);
             }, (block) -> {
@@ -273,6 +281,7 @@ public class TackShopBlockRegistry {
                     return new TackBoxBlockItem((Block) block.get());
                 };
             }));
+             */
         }
     }
 }
