@@ -5,18 +5,19 @@
 
 package com.kyraltre.tretackshop.registry;
 
-import com.alaharranhonor.swem.forge.blocks.*;
-import com.alaharranhonor.swem.forge.items.TackBoxBlockItem;
+import com.alaharranhonor.swem.block.*;
+import com.alaharranhonor.swem.item.TackBoxBlockItem;
+import com.kyraltre.tretackshop.TreTackShop;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries.Keys;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,31 +25,33 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class TackShopBlockRegistry {
-    public static final DeferredRegister<Block> BLOCKS;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_RAINBOW;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_BAMBOO;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_SWDM_BAMBOO;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_WHITEWASH;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_THATCH;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_MANGROVE;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_CHERRY;
+    //public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks("tretackshop");
+    public static final DeferredRegister.Blocks BLOCKS =
+            DeferredRegister.createBlocks(TreTackShop.MOD_ID);
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_RAINBOW;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_BAMBOO;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_SWDM_BAMBOO;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_WHITEWASH;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_THATCH;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_MANGROVE;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_CHERRY;
     ;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_ACACIA;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_BIRCH;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_CRIMSON;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_JUNGLE;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_DARK_OAK;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_OAK;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_SPRUCE;
-    public static final List<RegistryObject<TackBoxBlock>> TACK_BOX_WARPED;
-    public static final List<RegistryObject<Block>> CONES;
-//    public static final List<RegistryObject<Block>> CONE_RAINBOW;
-//    public static final RegistryObject<Block> CONE_RAINBOW;
-    public static final List<RegistryObject<HalfBarrelBlock>> HALF_BARREL;
-    public static final List<RegistryObject<SlowFeederBlock>> SLOW_FEEDER;
-//        public static final List<RegistryObject<GrainFeederBlock>> GRAIN_FEEDER;
-//        public static final List<RegistryObject<GrainBinBlock>> BIN_GRAIN;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_ACACIA;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_BIRCH;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_CRIMSON;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_JUNGLE;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_DARK_OAK;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_OAK;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_SPRUCE;
+    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_WARPED;
+    public static final List<DeferredBlock<Block>> CONES;
+//    public static final List<DeferredBlock<Block>> CONE_RAINBOW;
+//    public static final DeferredBlock<Block> CONE_RAINBOW;
+    public static final List<DeferredBlock<HalfBarrelBlock>> HALF_BARREL;
+    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER;
+//        public static final List<DeferredBlock<GrainFeederBlock>> GRAIN_FEEDER;
+//        public static final List<DeferredBlock<GrainBinBlock>> BIN_GRAIN;
 
     public TackShopBlockRegistry() {
     }
@@ -57,28 +60,28 @@ public class TackShopBlockRegistry {
         BLOCKS.register(modBus);
     }
 
-    private static <T extends Block> RegistryObject<T> register(String name, Supplier<? extends T> sup) {
+    private static <T extends Block> DeferredBlock<T> register(String name, Supplier<? extends T> sup) {
         return register(name, sup);
     }
 
-    private static <T extends Block> RegistryObject<T> register(String name, Supplier<? extends T> sup, Function<RegistryObject<T>, Supplier<? extends Item>> itemCreator) {
-        RegistryObject<T> ret = registerNoItem(name, sup);
+    private static <T extends Block> DeferredBlock<T> register(String name, Supplier<? extends T> sup, Function<DeferredBlock<T>, Supplier<? extends Item>> itemCreator) {
+        DeferredBlock<T> ret = registerNoItem(name, sup);
         DecorShopItems.REGISTRY.register(name, (Supplier) itemCreator.apply(ret));
         return ret;
     }
 
-    private static <T extends Block> RegistryObject<T> registerNoItem(String name, Supplier<? extends T> sup) {
+    private static <T extends Block> DeferredBlock<T> registerNoItem(String name, Supplier<? extends T> sup) {
         return BLOCKS.register(name, sup);
     }
 
-    private static Supplier<BlockItem> item(RegistryObject<? extends Block> block, CreativeModeTab itemGroup) {
+    private static Supplier<BlockItem> item(DeferredBlock<? extends Block> block, CreativeModeTab itemGroup) {
         return () -> {
             return new BlockItem((Block) block.get(), (new Item.Properties()));
         };
     }
 
     static {
-        BLOCKS = DeferredRegister.create(Keys.BLOCKS, "tretackshop");
+        //BLOCKS = DeferredRegister.create(Keys.BLOCKS, "tretackshop")
 
 //        CONE_RAINBOW = BLOCKS.register("cone_" + "rainbow", () -> {
 //            return new ConeBase();
