@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "tretackshop:western_blanket_rainbow", "required": false},
+    {"id": "tretackshop:western_blanket_1", "required": false},
+    {"id": "tretackshop:western_blanket_2", "required": false},
+    {"id": "tretackshop:western_blanket_3", "required": false},
+    {"id": "tretackshop:western_blanket_4", "required": false},
+    {"id": "tretackshop:western_blanket_5", "required": false},
+    {"id": "tretackshop:western_blanket_6", "required": false},
+    {"id": "tretackshop:western_blanket_7", "required": false},
+    {"id": "tretackshop:western_blanket_8", "required": false},
+    {"id": "tretackshop:western_blanket_9", "required": false},
+    {"id": "tretackshop:western_blanket_10", "required": false},
+    {"id": "tretackshop:western_blanket_11", "required": false},
+    {"id": "tretackshop:western_blanket_12", "required": false},
+    {"id": "tretackshop:western_blanket_13", "required": false},
+    {"id": "tretackshop:western_blanket_14", "required": false},
+    {"id": "tretackshop:western_blanket_trans", "required": false}
+  ]
+}

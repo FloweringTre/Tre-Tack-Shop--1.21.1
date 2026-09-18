@@ -6,36 +6,32 @@
 package com.kyraltre.tretackshop.item;
 
 import com.kyraltre.tretackshop.registry.AwardShopItems;
+import com.kyraltre.tretackshop.registry.TackShopItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class AwardShopCreativeModTab {
     public static final DeferredRegister<CreativeModeTab> REGISTRY;
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN;
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AWARD;
 
     public AwardShopCreativeModTab() {
     }
 
-    public static void init(IEventBus bus) {
-        REGISTRY.register(bus);
+    public static void init(IEventBus bus) {REGISTRY.register(bus);
     }
 
     static {
         REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, "treawardtab");
-        MAIN = REGISTRY.register("main", () -> CreativeModeTab.builder().title(Component.translatable("creativetab.treaward_tab")).icon(() -> new ItemStack(AwardShopItems.HOUND_RIBBON_THREE_TAILS.get()))
-                .displayItems((pParameters, pOutput) -> {
-                    // Add items from TackShopBlockRegistry
-                    AwardShopItems.REGISTRY.getEntries().forEach((registeredItem) -> {
-                        Item item = registeredItem.get();
-                        pOutput.accept(item);
-                    });
-                })
-                .withSearchBar().build());
+        AWARD = REGISTRY.register("award", () -> CreativeModeTab.builder().title(Component.translatable("creativetab.awardtack_tab")).icon(() -> new ItemStack(AwardShopItems.AWARD_RIBBON_THREE_TAILS.get(0).get()))
+            .displayItems((pParameters, pOutput) -> AwardShopItems.REGISTRY.getEntries().forEach((registeredItem) -> {
+                Item item = registeredItem.get();
+                pOutput.accept(item);
+            })).build());
     }
 }

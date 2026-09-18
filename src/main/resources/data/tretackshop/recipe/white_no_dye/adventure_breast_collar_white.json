@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "adventure_breast_collar",
+  "key": {
+    "x": {
+      "tag": "swem:refined_leather"
+    },
+    "y": {
+      "item": "minecraft:iron_ingot"
+    },
+    "z": {
+      "item": "minecraft:white_dye"
+    }
+  },
+  "pattern": [
+    "xzx",
+    " y ",
+    " y "
+  ],
+  "result": {
+    "id": "tretackshop:adventure_breast_collar_white"
+  }
+}

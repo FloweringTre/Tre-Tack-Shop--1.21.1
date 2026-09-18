@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "tretackshop:western_girth_strap_1", "required": false},
+    {"id": "tretackshop:western_girth_strap_2", "required": false},
+    {"id": "tretackshop:western_girth_strap_3", "required": false},
+    {"id": "tretackshop:western_girth_strap_4", "required": false},
+    {"id": "tretackshop:western_girth_strap_5", "required": false},
+    {"id": "tretackshop:western_girth_strap_6", "required": false},
+    {"id": "tretackshop:western_girth_strap_7", "required": false},
+    {"id": "tretackshop:western_girth_strap_8", "required": false},
+    {"id": "tretackshop:western_girth_strap_9", "required": false},
+    {"id": "tretackshop:western_girth_strap_10", "required": false},
+    {"id": "tretackshop:western_girth_strap_11", "required": false},
+    {"id": "tretackshop:western_girth_strap_12", "required": false},
+    {"id": "tretackshop:western_girth_strap_13", "required": false},
+    {"id": "tretackshop:western_girth_strap_14", "required": false},
+    {"id": "tretackshop:western_girth_strap_rainbow", "required": false},
+    {"id": "tretackshop:western_girth_strap_trans", "required": false}
+
+  ]
+}

@@ -7,18 +7,14 @@ package com.kyraltre.tretackshop.registry;
 
 import com.alaharranhonor.swem.block.*;
 import com.alaharranhonor.swem.item.TackBoxBlockItem;
-import com.kyraltre.tretackshop.TreTackShop;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredBlock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,29 +22,21 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class AwardShopBlockRegistry {
-    //public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems("tretackshop");
-    public static final DeferredRegister.Blocks BLOCKS =
-            DeferredRegister.createBlocks(TreTackShop.MOD_ID);
-//    public static final List<DeferredBlock<TackBoxBlock>> AWARD_TACK_BOX;
-//    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_HOUND;
-//    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_MORPHO;
-//    public static final List<DeferredBlock<TackBoxBlock>> TACK_BOX_MONARCH;
-    public static final List<DeferredBlock<HalfBarrelBlock>> HALF_BARREL_MONARCH;
-    public static final List<DeferredBlock<HalfBarrelBlock>> HALF_BARREL_MORPHO;
-    public static final List<DeferredBlock<HalfBarrelBlock>> HALF_BARREL_HOUND;
-//    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER_MONARCH;
-//    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER_MORPHO;
-//    public static final List<DeferredBlock<SlowFeederBlock>> SLOW_FEEDER_HOUND;
-    public static final List<DeferredBlock<Block>> CONE_MORPHO;
-    public static final List<DeferredBlock<Block>> CONE_MONARCH;
-    public static final List<DeferredBlock<Block>> CONE_HOUND;
-
-//    public static final List<DeferredBlock<GrainFeederBlock>> GRAIN_FEEDER_MONARCH;
-//    public static final List<DeferredBlock<GrainFeederBlock>> GRAIN_FEEDER_MORPHO;
-//    public static final List<DeferredBlock<GrainFeederBlock>> GRAIN_FEEDER_HOUND;
-//    public static final List<DeferredBlock<GrainBinBlock>> BIN_GRAIN_MONARCH;
-//    public static final List<DeferredBlock<GrainBinBlock>> BIN_GRAIN_MORPHO;
-//    public static final List<DeferredBlock<GrainBinBlock>> BIN_GRAIN_HOUND;
+    public static final DeferredRegister.Blocks BLOCKS;
+/// ════════════════════════════════════ AWARD SETS (Blank Sets) ════════════════════════════════════ ///
+    public static final List<DeferredBlock<TackBoxBlock>> AWARD_TACK_BOXES;
+    public static final List<DeferredBlock<Block>> AWARD_CONES;
+    public static final List<DeferredBlock<WheelBarrowBlock>> AWARD_WHEELBARROWS;
+    public static final List<DeferredBlock<SlowFeederBlock>> AWARD_SLOW_FEEDERS;
+    public static final List<DeferredBlock<SeparatorBlock>> AWARD_SEPARATORS;
+    public static final List<DeferredBlock<GrainFeederBlock>> AWARD_GRAIN_FEEDERS;
+    public static final List<DeferredBlock<HorseDoorBlock>> AWARD_PASTURE_GATE_HORSES;
+    public static final List<DeferredBlock<CareDoorBlock>> AWARD_PASTURE_GATE_CARES;
+    public static final List<DeferredBlock<CareDoorHalfBlock>> AWARD_WEB_GUARD_CARES;
+    public static final List<DeferredBlock<HorseDoorHalfBlock>> AWARD_WEB_GUARD_HORSES;
+    public static final List<DeferredBlock<HalfDoorBlock>> AWARD_WEB_GUARD_RIDERS;
+    public static final List<DeferredBlock<HalfBarrelBlock>> AWARD_HALF_BARRELS;
+    public static final List<DeferredBlock<GrainBinBlock>> AWARD_BIN_GRAINS;
 
     public AwardShopBlockRegistry() {
     }
@@ -57,185 +45,141 @@ public class AwardShopBlockRegistry {
         BLOCKS.register(modBus);
     }
 
-    private static <T extends Block> DeferredBlock<T> register(String name, Supplier<? extends T> sup) {
-        return register(name, sup);
+    private static <T extends Block> DeferredBlock<T> register(
+            String name,
+            java.util.function.Function<Properties, ? extends T> factory) {
+        return BLOCKS.registerBlock(name, factory);
     }
 
-    private static <T extends Block> DeferredBlock<T> register(String name, Supplier<? extends T> sup, Function<DeferredBlock<T>, Supplier<? extends Item>> itemCreator) {
-        DeferredBlock<T> ret = registerNoItem(name, sup);
-        AwardShopItems.REGISTRY.register(name, (Supplier) itemCreator.apply(ret));
+    private static <T extends Block> DeferredBlock<T> register(
+            String name,
+            java.util.function.Function<Properties, ? extends T> factory,
+            Function<DeferredBlock<T>, Supplier<? extends Item>> itemCreator) {
+        DeferredBlock<T> ret = BLOCKS.registerBlock(name, factory);
+        AwardShopItems.REGISTRY.register(name, registryName -> itemCreator.apply(ret).get());
         return ret;
     }
 
-    private static <T extends Block> DeferredBlock<T> registerNoItem(String name, Supplier<? extends T> sup) {
-        return BLOCKS.register(name, sup);
+    private static <T extends Block> DeferredBlock<T> registerNoItem(
+            String name,
+            java.util.function.Function<Properties, ? extends T> factory) {
+        return BLOCKS.registerBlock(name, factory);
     }
 
-    private static Supplier<BlockItem> item(DeferredBlock<? extends Block> block, CreativeModeTab itemGroup) {
-        return () -> {
-            return new BlockItem((Block) block.get(), (new Item.Properties()));
-        };
-    }
 
     static {
-        //BLOCKS = DeferredRegister.create(Keys.BLOCKS, "tretackshop");
+        BLOCKS = DeferredRegister.createBlocks("tretackshop");
+/// ════════════════════════════════════ AWARD SETS (Blank Sets) ════════════════════════════════════ ///
+        AWARD_TACK_BOXES = new ArrayList<>();
+        AWARD_CONES = new ArrayList();
+        AWARD_WHEELBARROWS = new ArrayList();
+        AWARD_SLOW_FEEDERS = new ArrayList();
+        AWARD_SEPARATORS = new ArrayList();
+        AWARD_GRAIN_FEEDERS = new ArrayList();
+        AWARD_PASTURE_GATE_HORSES = new ArrayList();
+        AWARD_PASTURE_GATE_CARES = new ArrayList();
+        AWARD_WEB_GUARD_CARES = new ArrayList();
+        AWARD_WEB_GUARD_HORSES = new ArrayList();
+        AWARD_WEB_GUARD_RIDERS = new ArrayList();
+        AWARD_HALF_BARRELS = new ArrayList();
+        AWARD_BIN_GRAINS = new ArrayList();
 
-//        CONE_HOUND = BLOCKS.register("cone_" + "hound", () -> {
-//            return new ConeBase();
-//        });
 
-        CONE_MONARCH = new ArrayList();
-        CONE_MORPHO = new ArrayList();
-        CONE_HOUND = new ArrayList();
-//        AWARD_TACK_BOX = new ArrayList();
-//        TACK_BOX_MONARCH = new ArrayList();
-//        TACK_BOX_MORPHO = new ArrayList();
-//        TACK_BOX_HOUND = new ArrayList();
-        HALF_BARREL_MONARCH = new ArrayList();
-        HALF_BARREL_MORPHO = new ArrayList();
-        HALF_BARREL_HOUND = new ArrayList();
-//        SLOW_FEEDER_MONARCH = new ArrayList();
-//        SLOW_FEEDER_MORPHO = new ArrayList();
-//        SLOW_FEEDER_HOUND = new ArrayList();
-//        GRAIN_FEEDER_MONARCH = new ArrayList();
-//        GRAIN_FEEDER_MORPHO = new ArrayList();
-//        GRAIN_FEEDER_HOUND = new ArrayList();
-//        BIN_GRAIN_MONARCH = new ArrayList();
-//        BIN_GRAIN_MORPHO = new ArrayList();
-//        BIN_GRAIN_HOUND = new ArrayList();
-
-        for (int var8 = 1; var8 < 2; ++var8) {
-            CONE_MORPHO.add(register("cone_" + "morpho", () -> {
+        int var5 = 24;
+        for (int var2 = 0; var2 < var5; ++var2) {
+            int counter = var2+1;
+            AWARD_TACK_BOXES.add(register("award_tack_box_" + counter, props -> {
+                return new TackBoxBlock(props.noOcclusion().sound(SoundType.WOOD).strength(2.0F, 3.0F), 1);
+            }, (block) -> {
+                return () -> {
+                    return new TackBoxBlockItem((Block) block.get());
+                };
+            }));
+            AWARD_CONES.add(register("award_cone_" + counter, props -> {
                 return new ConeBase();
             }, (block) -> {
                 return () -> {
                     return new ConeBlockItem((Block) block.get());
                 };
             }));
-            CONE_MONARCH.add(register("cone_" + "monarch", () -> {
-                return new ConeBase();
-            }, (block) -> {
-                return () -> {
-                    return new ConeBlockItem((Block) block.get());
-                };
-            }));
-            CONE_HOUND.add(register("cone_" + "hound", () -> {
-                return new ConeBase();
-            }, (block) -> {
-                return () -> {
-                    return new ConeBlockItem((Block) block.get());
-                };
-            }));
-                /*TACK_BOX_MORPHO.add(register("tack_box_" + "morpho", () -> {
-                    return new TackBoxBlock(Properties.of().noOcclusion().sound(SoundType.WOOD).strength(2.0F, 3.0F), 1);
-                }, (block) -> {
-                    return () -> {
-                        return new TackBoxBlockItem((Block) block.get());
-                    };
-                }));
-                TACK_BOX_MONARCH.add(register("tack_box_" + "monarch", () -> {
-                    return new TackBoxBlock(Properties.of().noOcclusion().sound(SoundType.WOOD).strength(2.0F, 3.0F), 1);
-                }, (block) -> {
-                    return () -> {
-                        return new TackBoxBlockItem((Block) block.get());
-                    };
-                }));
-                TACK_BOX_HOUND.add(register("tack_box_" + "hound", () -> {
-                    return new TackBoxBlock(Properties.of().noOcclusion().sound(SoundType.WOOD).strength(2.0F, 3.0F), 1);
-                }, (block) -> {
-                    return () -> {
-                        return new TackBoxBlockItem((Block) block.get());
-                    };
-                }));*/
-            HALF_BARREL_MONARCH.add(register("half_barrel_"+ "monarch", () -> {
-                return new HalfBarrelBlock(Properties.of().noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F));
+            AWARD_WHEELBARROWS.add(register("award_wheelbarrow_" + counter, props -> {
+                return new WheelBarrowBlock(props.noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F), null);
             }, (block) -> {
                 return () -> {
                     return new BlockItemBase((Block)block.get());
                 };
             }));
-            HALF_BARREL_MORPHO.add(register("half_barrel_"+ "morpho", () -> {
-                return new HalfBarrelBlock(Properties.of().noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F));
+            AWARD_SLOW_FEEDERS.add(register("award_slow_feeder_" + counter, props -> {
+                return new SlowFeederBlock(props.noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F), null);
             }, (block) -> {
                 return () -> {
                     return new BlockItemBase((Block)block.get());
                 };
             }));
-            HALF_BARREL_HOUND.add(register("half_barrel_"+ "hound", () -> {
-                return new HalfBarrelBlock(Properties.of().noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F));
+            AWARD_SEPARATORS.add(register("award_separator_" + counter, props -> {
+                return new SeparatorBlock(props.noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F), null);
             }, (block) -> {
                 return () -> {
                     return new BlockItemBase((Block)block.get());
                 };
             }));
-            /*SLOW_FEEDER_MONARCH.add(register("slow_feeder_"+ "monarch", () -> {
-                return new SlowFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), DyeColor.ORANGE);
+            AWARD_GRAIN_FEEDERS.add(register("award_grain_feeder_" + counter, props -> {
+                return new GrainFeederBlock(props.noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F), null);
             }, (block) -> {
                 return () -> {
                     return new BlockItemBase((Block)block.get());
                 };
             }));
-            SLOW_FEEDER_MORPHO.add(register("slow_feeder_"+ "morpho", () -> {
-                return new SlowFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), DyeColor.BLUE);
+            AWARD_PASTURE_GATE_HORSES.add(register("award_pasture_gate_horse_" + counter, props -> {
+                return new HorseDoorBlock(props.noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F), BlockSetType.OAK,null);
             }, (block) -> {
                 return () -> {
                     return new BlockItemBase((Block)block.get());
                 };
             }));
-            SLOW_FEEDER_HOUND.add(register("slow_feeder_"+ "hound", () -> {
-                return new SlowFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), DyeColor.PINK);
+            AWARD_PASTURE_GATE_CARES.add(register("award_pasture_gate_care_" + counter, props -> {
+                return new CareDoorBlock(props.noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F), BlockSetType.OAK,null);
             }, (block) -> {
                 return () -> {
                     return new BlockItemBase((Block)block.get());
                 };
-            }));*/
-//            GRAIN_FEEDER_MONARCH.add(register("grain_feeder_"+ "monarch", () -> {
-//                return new GrainFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), null);
-//            }, (block) -> {
-//                return () -> {
-//                    return new BlockItemBase((Block)block.get());
-//                };
-//            }));
-//            GRAIN_FEEDER_MORPHO.add(register("grain_feeder_"+ "morpho", () -> {
-//                return new GrainFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), null);
-//            }, (block) -> {
-//                return () -> {
-//                    return new BlockItemBase((Block)block.get());
-//                };
-//            }));
-//            GRAIN_FEEDER_HOUND.add(register("grain_feeder_"+ "hound", () -> {
-//                return new GrainFeederBlock(Properties.of().sound(SoundType.METAL).strength(3.0F, 4.0F), null);
-//            }, (block) -> {
-//                return () -> {
-//                    return new BlockItemBase((Block)block.get());
-//                };
-//            }));
-//            BIN_GRAIN_MONARCH.add(register("bin_grain_" + "monarch", () -> {
-//                return new GrainBinBlock(Properties.of().strength(1.0F, 2.0F).noOcclusion());
-//            }));
-//            BIN_GRAIN_MORPHO.add(register("bin_grain_" + "morpho", () -> {
-//                return new GrainBinBlock(Properties.of().strength(1.0F, 2.0F).noOcclusion());
-//            }, (block) -> {
-//                return () -> {
-//                    return new BlockItemBase((Block)block.get());
-//                };
-//            }));
-//            BIN_GRAIN_HOUND.add(register("bin_grain_" + "hound", () -> {
-//                return new GrainBinBlock(Properties.of().strength(1.0F, 2.0F).noOcclusion());
-//            }));
-            }
-
-                /*for (int var4 = 0; var4 < 14; ++var4) {
-                    int counter = var4 + 1;
-
-                    AWARD_TACK_BOX.add(register("award_tack_box_" + counter, () -> {
-                        return new TackBoxBlock(Properties.of().noOcclusion().sound(SoundType.WOOD).strength(2.0F, 3.0F), 1);
-                    }, (block) -> {
-                        return () -> {
-                            return new TackBoxBlockItem((Block) block.get());
-                        };
-                    }));
-
-                }*/
+            }));
+            AWARD_WEB_GUARD_CARES.add(register("award_web_guard_care_" + counter, props -> {
+                return new CareDoorHalfBlock(props.noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F), BlockSetType.OAK,null);
+            }, (block) -> {
+                return () -> {
+                    return new BlockItemBase((Block)block.get());
+                };
+            }));
+            AWARD_WEB_GUARD_HORSES.add(register("award_web_guard_horse_" + counter, props -> {
+                return new HorseDoorHalfBlock(props.noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F), BlockSetType.OAK,null);
+            }, (block) -> {
+                return () -> {
+                    return new BlockItemBase((Block)block.get());
+                };
+            }));
+            AWARD_WEB_GUARD_RIDERS.add(register("award_web_guard_rider_" + counter, props -> {
+                return new HalfDoorBlock(props.noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F), null);
+            }, (block) -> {
+                return () -> {
+                    return new BlockItemBase((Block)block.get());
+                };
+            }));
+            AWARD_HALF_BARRELS.add(register("award_half_barrel_" + counter, props -> {
+                return new HalfBarrelBlock(props.noOcclusion().sound(SoundType.METAL).strength(2.0F, 3.0F));
+            }, (block) -> {
+                return () -> {
+                    return new BlockItemBase((Block)block.get());
+                };
+            }));
+            AWARD_BIN_GRAINS.add(register("award_bin_grain_" + counter, props -> {
+                return new GrainBinBlock(props.strength(1.0F, 2.0F).noOcclusion());
+            }, (block) -> {
+                return () -> {
+                    return new BlockItemBase((Block)block.get());
+                };
+            }));
+       }
     }
+
 }

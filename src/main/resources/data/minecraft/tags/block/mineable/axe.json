@@ -1,0 +1,6 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "#tretackshop:craft/tack_boxes", "required": false}
+  ]
+}

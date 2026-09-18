@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "dressage_girth_strap",
+  "pattern": [
+    "yxB",
+    " xB",
+    "Cxy"
+  ],
+  "key": {
+    "x": {
+      "tag": "swem:refined_leather"
+    },
+    "y": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:white_wool"
+    },
+    "C": {
+      "tag": "minecraft:saplings"
+    }
+  },
+  "result": {
+    "id": "tretackshop:dressage_girth_strap"
+  }
+}

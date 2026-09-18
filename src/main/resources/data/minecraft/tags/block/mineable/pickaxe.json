@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "#tretackshop:craft/slow_feeders", "required": false},
+    {"id": "#tretackshop:craft/grain_feeders", "required": false},
+    {"id": "#tretackshop:craft/half_barrels", "required": false},
+    {"id": "#tretackshop:craft/grain_bins", "required": false},
+    {"id": "#tretackshop:craft/tack_boxes", "required": false}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "swem:wheelbarrows"
+    },
+    {
+      "item": "tretackshop:paw_print"
+    }
+  ],
+  "result": {
+    "id": "tretackshop:wheelbarrow_hound"
+  }
+}

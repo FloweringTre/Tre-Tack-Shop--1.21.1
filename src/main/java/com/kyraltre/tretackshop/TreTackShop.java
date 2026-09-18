@@ -1,85 +1,77 @@
 package com.kyraltre.tretackshop;
 
-import com.kyraltre.tretackshop.block.TackShopBlocks;
+import com.kyraltre.tretackshop.compat.SwemBlockEntityCompat;
 import com.kyraltre.tretackshop.item.AwardShopCreativeModTab;
-import com.kyraltre.tretackshop.item.BlockShopCreativeModTab;
 import com.kyraltre.tretackshop.item.TackShopCreativeModTab;
 import com.kyraltre.tretackshop.registry.*;
-import net.neoforged.fml.event.lifecycle.FMLConstructModEvent;
-import org.slf4j.Logger;
-
+//import com.kyraltre.tretackshop.compat.*;
 import com.mojang.logging.LogUtils;
-
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraft.resources.ResourceLocation;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.minecraft.resources.ResourceLocation;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+//import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
+import org.slf4j.Logger;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+
+// The value here should match an entry in the META-INF/mods.toml file
 @Mod(TreTackShop.MOD_ID)
 public class TreTackShop {
-    // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "tretackshop";
-    // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static ResourceLocation resloc(String name) {return ResourceLocation.fromNamespaceAndPath("tretackshop", name);}
+    public static ResourceLocation resloc(String name) {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
+    }
 
-    public static ResourceLocation swresloc(String name) {return ResourceLocation.fromNamespaceAndPath("swem", name);}
+    public static ResourceLocation swresloc(String name) {
+        return ResourceLocation.fromNamespaceAndPath("swem", name);
+    }
 
-    // The constructor for the mod class is the first code that is run when your mod is loaded.
-    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public TreTackShop(IEventBus modEventBus, ModContainer modContainer) {  //IEventBus modEventBus, ModContainer modContainer
-        modEventBus.addListener(this::commonSetup);
-
-        NeoForge.EVENT_BUS.register(this);
-//        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, TackShopCommonConfigs.SPEC, "tretackshop-common.toml");
+    public TreTackShop(IEventBus modEventBus) {
         TackShopCreativeModTab.init(modEventBus);
         AwardShopCreativeModTab.init(modEventBus);
-        BlockShopCreativeModTab.init(modEventBus);
 
-        TackShopBlocks.register(modEventBus);
         TackShopBlockRegistry.init(modEventBus);
-        AwardShopBlockRegistry.init(modEventBus);
         TackShopItems.init(modEventBus);
+        AwardShopBlockRegistry.init(modEventBus);
         AwardShopItems.init(modEventBus);
-        DecorShopItems.init(modEventBus);
+        MissingMappingHandler.init();
 
-        // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
-
-        // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        //modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+//        if (ModList.get().isLoaded("ssedeco")) {
+//            SSECCompat.init(modEventBus);
+//        }
     }
 
-    private void commonSetup(FMLCommonSetupEvent event) {
-        // Some common setup code
+    private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("Tre says plant a tree <3");
-        //LOGGER.info(14 + " Award Sets Loaded.");
+        LOGGER.info(24 + " Award Sets Loaded.");
+        SwemBlockEntityCompat.apply();
     }
+
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
-        LOGGER.info("Tre says make your world a rainbow of color");
+
     }
+
 }

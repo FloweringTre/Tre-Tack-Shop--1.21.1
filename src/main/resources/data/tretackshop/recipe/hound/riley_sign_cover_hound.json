@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "riley_sign_covers",
+  "ingredients": [
+    {
+      "tag": "tretackshop:craft/sign_covers"
+    },
+    {
+      "item": "tretackshop:paw_print"
+    },
+    {
+      "item": "minecraft:peony"
+    }
+  ],
+  "result": {
+    "id": "tretackshop:sign_cover_riley_hound"
+  }
+}

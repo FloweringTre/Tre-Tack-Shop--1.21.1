@@ -1,0 +1,43 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "tretackshop:amethyst_horse_armor_hound", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_monarch", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_morpho", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_rainbow", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_1", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_2", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_3", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_4", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_5", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_6", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_7", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_8", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_9", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_10", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_11", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_12", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_13", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_14", "required": false},
+
+    {"id": "tretackshop:amethyst_horse_armor_black", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_blue", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_brown", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_cyan", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_gray", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_green", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_light_blue", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_light_gray", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_lime", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_magenta", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_orange", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_pink", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_purple", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_red", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_white", "required": false},
+    {"id": "tretackshop:amethyst_horse_armor_yellow", "required": false},
+
+    "swem:horse_armor_amethyst"
+
+  ]
+}
