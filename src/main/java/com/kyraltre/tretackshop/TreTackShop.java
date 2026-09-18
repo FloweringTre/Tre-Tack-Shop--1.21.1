@@ -1,6 +1,7 @@
 package com.kyraltre.tretackshop;
 
 import com.kyraltre.tretackshop.compat.SwemBlockEntityCompat;
+import com.kyraltre.tretackshop.compat.SwemWaterColorCompat;
 import com.kyraltre.tretackshop.item.AwardShopCreativeModTab;
 import com.kyraltre.tretackshop.item.TackShopCreativeModTab;
 import com.kyraltre.tretackshop.registry.*;
