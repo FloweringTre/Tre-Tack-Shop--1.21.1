@@ -1,11 +1,10 @@
-package com.kyraltre.tretackshop.compat;
+package com.kyraltre.tretackshop.client;
 
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
@@ -14,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @EventBusSubscriber(
-        modid = "tretackshop"
+        modid = "tretackshop",
+        value = Dist.CLIENT
 )
 public final class SwemWaterColorCompat {
 
